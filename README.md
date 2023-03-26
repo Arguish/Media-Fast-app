@@ -28,6 +28,14 @@ Problema :
 
 ---
 
+### Estructura DB
+
+#### Provisional
+
+<img src="./Screenshot_5.png" width="100%">
+
+---
+
 [Figma](https://www.figma.com/file/6HmxlxnO5guiVslbWCFAz8/Untitled?node-id=0%3A1&t=YbxGSBsvTRDIlvJs-1)
 
 ## NPM I
