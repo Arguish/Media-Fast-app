@@ -1,0 +1,31 @@
+{
+  "name": "two-days-bd",
+  "version": "1.0.0",
+  "description": "<img src=\"https://app.milanote.com/media/p/images/1PGwkP1PR83x1H/tFr/image.png\" width=\"25%\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arguish/Two-Days-BD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arguish/Two-Days-BD/issues"
+  },
+  "homepage": "https://github.com/Arguish/Two-Days-BD#readme",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.2.0",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.30.0"
+  }
+}
