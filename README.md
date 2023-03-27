@@ -23,23 +23,23 @@
 
 ### Movie Endpoints
 
-| METHOD | ENDPOINT         | TOKEN | ROLE  | DESCRIPTION      | POST PARAMS | RETURNS         |
-| ------ | ---------------- | ----- | ----- | ---------------- | ----------- | --------------- |
-| GET    | /movies          | YES   | All   | Get all movies   | -           | [{ movie }]     |
-| GET    | /movies/:movieId | YES   | All   | Get one movie    | movie_id    | { movie }       |
-| PUT    | /movies/:movieId | YES   | Admin | Update movie     | movie_id    | "Movie updated" |
-| DELETE | /movies/:movieId | YES   | Admin | Remove one movie | movie_id    | "Movie deleted" |
-| GET  | /movie/newRandom?genres='usergenres' | YES   | All | Get random movie| movie_id    | { movie }  |
+| METHOD | ENDPOINT                             | TOKEN | ROLE  | DESCRIPTION      | POST PARAMS | RETURNS         |
+| ------ | ------------------------------------ | ----- | ----- | ---------------- | ----------- | --------------- |
+| GET    | /movies                              | YES   | All   | Get all movies   | -           | [{ movie }]     |
+| GET    | /movies/:movieId                     | YES   | All   | Get one movie    | movie_id    | { movie }       |
+| PUT    | /movies/:movieId                     | YES   | Admin | Update movie     | movie_id    | "Movie updated" |
+| DELETE | /movies/:movieId                     | YES   | Admin | Remove one movie | movie_id    | "Movie deleted" |
+| GET    | /movie/newRandom?genres='usergenres' | YES   | All   | Get random movie | movie_id    | { movie }       |
 
 ### Serie Endpoints
 
-| METHOD | ENDPOINT          | TOKEN | ROLE  | DESCRIPTION      | POST PARAMS | RETURNS         |
-| ------ | ----------------- | ----- | ----- | ---------------- | ----------- | --------------- |
-| GET    | /series           | YES   | All   | Get all serie    | -           | [{ series }]    |
-| GET    | /series/:serieId  | YES   | All   | Get one serie    | serie_id    | { serie }       |
-| PUT    | /series/:seriesId | YES   | Admin | Update serie     | serie_id    | "Serie updated" |
-| DELETE | /series/:serieId  | YES   | Admin | Remove one serie | serie_id    | "Serie deleted" |
-| GET  | /serie/newRandom?genres='usergenres' | YES   | All | Get random serie | serie_id    | { serie }  |
+| METHOD | ENDPOINT                             | TOKEN | ROLE  | DESCRIPTION      | POST PARAMS | RETURNS         |
+| ------ | ------------------------------------ | ----- | ----- | ---------------- | ----------- | --------------- |
+| GET    | /series                              | YES   | All   | Get all serie    | -           | [{ series }]    |
+| GET    | /series/:serieId                     | YES   | All   | Get one serie    | serie_id    | { serie }       |
+| PUT    | /series/:seriesId                    | YES   | Admin | Update serie     | serie_id    | "Serie updated" |
+| DELETE | /series/:serieId                     | YES   | Admin | Remove one serie | serie_id    | "Serie deleted" |
+| GET    | /serie/newRandom?genres='usergenres' | YES   | All   | Get random serie | serie_id    | { serie }       |
 
 ## Analisis
 
@@ -76,57 +76,57 @@ Problema :
 <img src="./Screenshot_5.png" width="100%">
 
 ---
+
 ### User flow
 
-User flow: 
+User flow:
 
--User runs app.
+- User runs app.
 
+#### User REGISTER:
 
--User REGISTER:
+- User inputs data.
+- Category questions are shown.
+- User selects.
+- 'How many time question' is shown.
+- User selects.
+- \*Time is less than two hours?
+- Show suggestions until user accepts.
+- \*Time is more than two hours?
+- Movie or show question is shown.
+- User selects.
+- Random in base of category previously selected.
 
--User inputs data.
--Category questions are shown.
--User selects.
--'How many time question' is shown.
--User selects.
-*Time is less than two hours?
--Show suggestions until user accepts.
-*Time is more than two hours?
--Movie or show question is shown.
--User selects.
--Random in base of category previously selected.
+---
 
--USER LOGIN:
+#### USER LOGIN:
 
--User inputs data.
--'How many time question' is shown.
-  -Less than two hours?
-	*Less than 4 and more than 1 pending?
- 	  · 'Would you like to see new' question is shown.
- 		-If yes: random suggestion in base of user/category until user accepts.
- 		-If not: show user pending suggestions.
- 		  -If user doesnt accept anyone: EXIT.
-  -More than two hours?
-	*'Show or movie' question is shown.
-	-User selects movie.
-	-(there wont be pending movies) User will be shown 8 random movies.
-	-If user doesnt accept anyone
-	    · 'Would you like better to watch a show?' question is shown.
-      
-	      -If yes: random suggestion in base of user/category until user accepts.
-	        If not: EXIT.
-      		
-	-User selects show.
-		*Less than 4 and more than 1 pending?
- 	    · 'Would you like to see new' question is shown.
- 		-If yes: random suggestion in base of user/category until user accepts.
- 		-If not: show user pending suggestions.
- 			-If user doesnt accept any of suggestions.
- 			     -'Would you like to see a movie' question is shown.
- 		  		-If no. EXIT.
- 		  		-If yes. User will be shown up until 8 random movies.
- 		  			-If user doesnt accept anyone: EXIT.
+- User inputs data.
+- 'How many time question' is shown.
+  - Less than two hours?
+  - \*Less than 4 and more than 1 pending?
+    · 'Would you like to see new' question is shown.
+    - If yes: random suggestion in base of user/category until user accepts.
+    - If not: show user pending suggestions.
+      - If user doesnt accept anyone: EXIT.
+  - More than two hours?
+  - \*'Show or movie' question is shown.
+  - User selects movie.
+  - (there wont be pending movies) User will be shown 8 random movies.
+  - If user doesnt accept anyone
+    - 'Would you like better to watch a show?' question is shown.
+    - If yes: random suggestion in base of user/category until user accepts.
+    - If not: EXIT.
+  - User selects show.
+    \*Less than 4 and more than 1 pending?
+    · 'Would you like to see new' question is shown.
+    - If yes: random suggestion in base of user/category until user accepts.
+    - If not: show user pending suggestions.
+      - If user doesnt accept any of suggestions.
+        - 'Would you like to see a movie' question is shown.
+        - If no. EXIT.
+        - If yes. User will be shown up until 8 random movies.
+          - If user doesnt accept anyone: EXIT.`
 
 ---
 
