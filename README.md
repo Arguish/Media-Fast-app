@@ -100,3 +100,9 @@ Problema :
 <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/6a813a0c-ba36-40ae-82f3-85b420391de1.png?auto=format&q=50&w=80&h=80&fit=max&dpr=3" width="21.5%"><img src="https://cdn.iconscout.com/icon/free/png-256/nodemon-226039.png" width="21.5%"><img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/morgan-freeman-1591029645.jpg?crop=0.668xw:1.00xh;0,0&resize=640:*" width="21.5%">
 
 <img src="https://user-images.githubusercontent.com/8939680/57233882-20344080-6fe5-11e9-9086-d20a955bed59.png" width="21.5%">
+
+---
+
+## User avatars
+
+<img src="https://www.gravatar.com/robohash/205e460b479e2e53482ec07740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/205e460b479e4e53482ec07740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/205e460b479e2e53482ec77740c08d40?f=y&s=400" width="21.5%">
