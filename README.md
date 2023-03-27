@@ -76,6 +76,59 @@ Problema :
 <img src="./Screenshot_5.png" width="100%">
 
 ---
+### User flow
+
+User flow: 
+
+-User runs app.
+
+
+-User REGISTER:
+
+-User inputs data.
+-Category questions are shown.
+-User selects.
+-'How many time question' is shown.
+-User selects.
+*Time is less than two hours?
+-Show suggestions until user accepts.
+*Time is more than two hours?
+-Movie or show question is shown.
+-User selects.
+-Random in base of category previously selected.
+
+-USER LOGIN:
+
+-User inputs data.
+-'How many time question' is shown.
+  -Less than two hours?
+	*Less than 4 and more than 1 pending?
+ 	  · 'Would you like to see new' question is shown.
+ 		-If yes: random suggestion in base of user/category until user accepts.
+ 		-If not: show user pending suggestions.
+ 		  -If user doesnt accept anyone: EXIT.
+  -More than two hours?
+	*'Show or movie' question is shown.
+	-User selects movie.
+	-(there wont be pending movies) User will be shown 8 random movies.
+	-If user doesnt accept anyone
+	    · 'Would you like better to watch a show?' question is shown.
+      
+	      -If yes: random suggestion in base of user/category until user accepts.
+	        If not: EXIT.
+      		
+	-User selects show.
+		*Less than 4 and more than 1 pending?
+ 	    · 'Would you like to see new' question is shown.
+ 		-If yes: random suggestion in base of user/category until user accepts.
+ 		-If not: show user pending suggestions.
+ 			-If user doesnt accept any of suggestions.
+ 			     -'Would you like to see a movie' question is shown.
+ 		  		-If no. EXIT.
+ 		  		-If yes. User will be shown up until 8 random movies.
+ 		  			-If user doesnt accept anyone: EXIT.
+
+---
 
 [Figma](https://www.figma.com/file/6HmxlxnO5guiVslbWCFAz8/Untitled?node-id=0%3A1&t=YbxGSBsvTRDIlvJs-1)
 
