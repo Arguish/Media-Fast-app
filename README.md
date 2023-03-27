@@ -8,39 +8,37 @@
 | ------ | ------------ | ----- | ---- | --------------------- | ------------------------------------------------------------------------------------- | ------- |
 | POST   | /auth/signup | -     | -    | User Sign Up          | user_name, user_nickname, image_url, email, date_of_birth, password, confirm_password | token   |
 | POST   | /auth/login  | -     | -    | Delete skills from DB | email, password                                                                       | token   |
+### Auth Endpoints
+
+| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION           |      PARAMS                                                                           | RETURNS |
+| ------ | ------------ | ----- | ---- | --------------------- | ------------------------------------------------------------------------------------- | ------- |
+| POST   | /auth/signup | -     | -    | User Sign Up          | user_name, user_nickname, image_url, email, date_of_birth, password, confirm_password | token   |
+| POST   | /auth/login  | -     | -    | Delete skills from DB | email, password                                                                       | token   |
 
 ### Users Endpoints
 
-| METHOD | ENDPOINT                                  | TOKEN | ROLE  | DESCRIPTION                    | POST PARAMS       | RETURNS              |
+| METHOD | ENDPOINT                                  | TOKEN | ROLE  | DESCRIPTION                    |      PARAMS       | RETURNS              |
 | ------ | ----------------------------------------- | ----- | ----- | ------------------------------ | ----------------- | -------------------- |
-| GET    | /users                                    | YES   | All   | Get all users                  | -                 | [{ users }]          |
-| GET    | /users/:userId                            | YES   | All   | Get one user                   | user_id           | { user }             |
+| GET    | /users/all                                | YES   | Admin | Get all users                  | -                 | [{ users }]          |
+| GET    | /user                                     | YES   | All   | Get own user                   | user_id           | { user }             |
+| GET    | /users/:userId                            | YES   | Admin | Get one user                   | user_id           | { user }             |
 | PUT    | /users/:userId                            | YES   | Admin | Update user                    | user_id           | "User updated"       |
+| POST   | /users/me                                 | YES   | All   | Update own user                | user_id           | "User updated"       |
 | DELETE | /users/:userId                            | YES   | Admin | Remove one user                | user_id           | "Profile deleted"    |
+| DELETE | /users/me                                 | YES   | All   | Update own user                | user_id           | "User updated"       |
 | GET    | /users/:userId/preferences                | YES   | All   | Get user preferences           | user_id           | [{user.preferences}] |
-| POST   | /users/:userId/preferences/serie/:serieId | YES   | All   | Add user select to preferences | user_id, serie_id | [{user.preferences}] |
-| POST   | /users/:userId/preferences/movie/:movieId | YES   | All   | Add user select to preferences | user_id, movie_id | [{user.preferences}] |
+| POST   | /users/:userId/preferences/media/:mediaId | YES   | All   | Add user select to preferences | user_id, media_id | [{user.preferences}] |
 
-### Movie Endpoints
+### Media Endpoints
 
-| METHOD | ENDPOINT                             | TOKEN | ROLE  | DESCRIPTION      | POST PARAMS | RETURNS         |
-| ------ | ------------------------------------ | ----- | ----- | ---------------- | ----------- | --------------- |
-| GET    | /movies                              | YES   | All   | Get all movies   | -           | [{ movie }]     |
-| GET    | /movies/:movieId                     | YES   | All   | Get one movie    | movie_id    | { movie }       |
-| PUT    | /movies/:movieId                     | YES   | Admin | Update movie     | movie_id    | "Movie updated" |
-| DELETE | /movies/:movieId                     | YES   | Admin | Remove one movie | movie_id    | "Movie deleted" |
-| GET    | /movie/newRandom?genres='usergenres' | YES   | All   | Get random movie | movie_id    | { movie }       |
-
-### Serie Endpoints
-
-| METHOD | ENDPOINT                             | TOKEN | ROLE  | DESCRIPTION      | POST PARAMS | RETURNS         |
-| ------ | ------------------------------------ | ----- | ----- | ---------------- | ----------- | --------------- |
-| GET    | /series                              | YES   | All   | Get all serie    | -           | [{ series }]    |
-| GET    | /series/:serieId                     | YES   | All   | Get one serie    | serie_id    | { serie }       |
-| PUT    | /series/:seriesId                    | YES   | Admin | Update serie     | serie_id    | "Serie updated" |
-| DELETE | /series/:serieId                     | YES   | Admin | Remove one serie | serie_id    | "Serie deleted" |
-| GET    | /serie/newRandom?genres='usergenres' | YES   | All   | Get random serie | serie_id    | { serie }       |
-
+| METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION      |      PARAMS | RETURNS         |
+| ------ | ----------------------------------   |  ----- | ----- | ---------------- | ----------- | --------------- |
+| GET    | /media                               | YES    | All   | Get all media    | -           | [{ media }]     |
+| POST   | /media                               | YES    | Admin | Create  media    | -           | [{ media }]     |
+| GET    | /media/:mediaId                      | YES    | All   | Get one media    | media_id    | { media }       |
+| PUT    | /media/:mediaId                      | YES    | Admin | Update media     | media_id    | "Media updated" |
+| DELETE | /media/:mediaId                      | YES    | Admin | Remove one media | media_id    | "Media deleted" |
+| GET    | /media/newRandom  		        | YES    | All   | Get random media | media_id    | { media }       |
 ## Analisis
 
 <img src="https://app.milanote.com/media/p/images/1PGwkP1PR83x1H/tFr/image.png" width="25%">
