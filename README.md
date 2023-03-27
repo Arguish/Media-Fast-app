@@ -4,10 +4,10 @@
 
 ### Auth Endpoints
 
-| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION           | POST PARAMS                                                 | RETURNS |
-| ------ | ------------ | ----- | ---- | --------------------- | ----------------------------------------------------------- | ------- |
-| POST   | /auth/signup | -     | -    | User Sign Up          | user_name, email, date_of_birth, password, confirm_password | token   |
-| POST   | /auth/login  | -     | -    | Delete skills from DB | email, password                                             | token   |
+| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION           | POST PARAMS                                                                           | RETURNS |
+| ------ | ------------ | ----- | ---- | --------------------- | ------------------------------------------------------------------------------------- | ------- |
+| POST   | /auth/signup | -     | -    | User Sign Up          | user_name, user_nickname, image_url, email, date_of_birth, password, confirm_password | token   |
+| POST   | /auth/login  | -     | -    | Delete skills from DB | email, password                                                                       | token   |
 
 ### Users Endpoints
 
@@ -18,7 +18,7 @@
 | PUT    | /users/:userId                            | YES   | Admin | Update user                    | user_id           | "User updated"       |
 | DELETE | /users/:userId                            | YES   | Admin | Remove one user                | user_id           | "Profile deleted"    |
 | GET    | /users/:userId/preferences                | YES   | All   | Get user preferences           | user_id           | [{user.preferences}] |
-| POST   | /users/:userId/preferences/serie/:serieId | YES   | All   | Add user select to preferences | user_id, movie_id | [{user.preferences}] |
+| POST   | /users/:userId/preferences/serie/:serieId | YES   | All   | Add user select to preferences | user_id, serie_id | [{user.preferences}] |
 | POST   | /users/:userId/preferences/movie/:movieId | YES   | All   | Add user select to preferences | user_id, movie_id | [{user.preferences}] |
 
 ### Movie Endpoints
