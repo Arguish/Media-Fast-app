@@ -1,5 +1,44 @@
 # Two-Days-BD
 
+### Auth Endpoints
+
+| METHOD | ENDPOINT     				| TOKEN | ROLE | DESCRIPTION           | POST PARAMS                                                 | RETURNS |
+| ------ | ------------ 				| ----- | ---- | --------------------- | ----------------------------------------------------------- | ------- |
+| POST   | /auth/signup 				| -     | -    | User Sign Up          | user_name, email, date_of_birth, password, confirm_password | token   |
+| POST   | /auth/login  				| -     | -    | Delete skills from DB | email, password                                             | token   |
+
+### Users Endpoints
+
+| METHOD | ENDPOINT                  			| TOKEN | ROLE  | DESCRIPTION                   | POST PARAMS                | RETURNS                              |
+| ------ | ------------------------  			| ----- | ----- | ----------------------------  | -------------------------- | ------------------------------------ |
+| GET    | /users                    			| YES   | All   | Get all users                 | -                          | [{ users }]                          |
+| GET    | /users/:userId            			| YES   | All   | Get one user                  | user_id                    | { user }                             |
+| PUT    | /users/:userId            			| YES   | Admin | Update user                   | user_id                    | "User updated"                       |
+| DELETE | /users/:userId            			| YES   | Admin | Remove one user               | user_id                    | "Profile deleted"                    |
+| GET    | /users/:userId/preferences			| YES   | All   | Get user preferences          | user_id                    | [{user.preferences}]                 |
+| POST   | /users/:userId/preferences/serie/:serieId	| YES   | All   | Add user select to preferences| user_id                    | [{user.preferences}]                 |
+| POST   | /users/:userId/preferences/movie/:movieId	| YES   | All   | Add user select to preferences| user_id                    | [{user.preferences}]                 |
+
+
+### Movie Endpoints
+
+| METHOD | ENDPOINT                   			| TOKEN | ROLE   | DESCRIPTION                 | POST PARAMS                | RETURNS                             |
+| ------ | ------------------------   			| ----- | -----  | --------------------------- | -------------------------- | ----------------------------------- |
+| GET    | /movies                    			| YES   | All   | Get all movies               | -                          | [{ movie }]                         |
+| GET    | /movies/:movieId           			| YES   | All   | Get one movie                | movie_id                   |  { movie }                          |
+| PUT    | /movies/:movieId           			| YES   | Admin | Update movie                 | movie_id                   |  "Movie updated"                    |
+| DELETE | /movies/:movieId           			| YES   | Admin | Remove one movie             | movie_id                   |  "Movie deleted"                    |
+
+
+### Serie Endpoints
+
+| METHOD | ENDPOINT                   			| TOKEN | ROLE  | DESCRIPTION                  | POST PARAMS                | RETURNS                             |
+| ------ | ------------------------   			| ----- | ----- | ---------------------------- | -------------------------- | ----------------------------------- |
+| GET    | /series                    			| YES   | All   | Get all serie                | -                          | [{ series }]                        |
+| GET    | /series/:serieId           			| YES   | All   | Get one serie                |  serie_id                  | { serie }                           |
+| PUT    | /series/:seriesId          			| YES   | Admin | Update serie                 |  serie_id                  | "Serie updated"                     |
+| DELETE | /series/:serieId           			| YES   | Admin | Remove one serie             |  serie_id                  | "Serie deleted"                     |
+
 ## Analisis
 
 <img src="https://app.milanote.com/media/p/images/1PGwkP1PR83x1H/tFr/image.png" width="25%">
