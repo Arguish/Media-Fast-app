@@ -105,4 +105,4 @@ Problema :
 
 ## User avatars
 
-<img src="https://www.gravatar.com/robohash/205e460b479e2e53482ec07740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/205e460b479e4e53482ec07740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/205e460b479e2e53482ec77740c08d40?f=y&s=400" width="21.5%">
+<img src="https://www.gravatar.com/robohash/205e460b479e2e53482ec07740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/205e460b479e4e53482ec07740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/205e460b479e2e53482ec77740c08d40?f=y&s=400" width="21.5%"><img src="https://www.gravatar.com/robohash/0?f=y&s=400" width="21.5%">
