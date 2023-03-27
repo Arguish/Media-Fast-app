@@ -29,6 +29,7 @@
 | GET    | /movies/:movieId | YES   | All   | Get one movie    | movie_id    | { movie }       |
 | PUT    | /movies/:movieId | YES   | Admin | Update movie     | movie_id    | "Movie updated" |
 | DELETE | /movies/:movieId | YES   | Admin | Remove one movie | movie_id    | "Movie deleted" |
+| GET  | /movie/newRandom?genres='usergenres' | YES   | All | Get random movie| movie_id    | { movie }  |
 
 ### Serie Endpoints
 
@@ -38,6 +39,7 @@
 | GET    | /series/:serieId  | YES   | All   | Get one serie    | serie_id    | { serie }       |
 | PUT    | /series/:seriesId | YES   | Admin | Update serie     | serie_id    | "Serie updated" |
 | DELETE | /series/:serieId  | YES   | Admin | Remove one serie | serie_id    | "Serie deleted" |
+| GET  | /serie/newRandom?genres='usergenres' | YES   | All | Get random serie | serie_id    | { serie }  |
 
 ## Analisis
 
