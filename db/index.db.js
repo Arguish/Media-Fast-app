@@ -32,4 +32,4 @@ async function syncModels(value) {
 	}
 }
 
-module.exports = {checkConnection, syncModels}
+module.exports = {checkConnection, syncModels, conn}
