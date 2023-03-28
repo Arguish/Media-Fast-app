@@ -1,22 +1,25 @@
 const router = require("express").Router();
 //CRUD
-const {} = require("../controllers/media.controller.js");
+const {
+  createMedia,
+  getAllMedia,
+  getMediaById,
+  updateMedia,
+  deleteMedia,
+} = require("../controllers/media.controller.js");
 //
 
-
 //C
-router.post("/", (req, res) => res.send("createMedia"));
+router.post("/", createMedia);
 
 //R
-router.get("/", (req, res) => res.send("getAllMedia"));
-router.get("/newRandom", (req, res) => res.send("getRandom"));
-router.get("/:mediaId", (req, res) => res.send("getMediaById"));
+router.get("/", getAllMedia);
+router.get("/:mediaId", getMediaById);
 
 //U
-router.put("/:mediaId", (req, res) => res.send("updateMedia"));
+router.put("/:mediaId", updateMedia);
 
 //D
-router.delete("/:mediaId", (req, res) => res.send("deleteMedia"));
-
+router.delete("/:mediaId", deleteMedia);
 
 module.exports = router;

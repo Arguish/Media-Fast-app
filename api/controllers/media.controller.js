@@ -1,7 +1,5 @@
 const Media = require("../models/media.model");
 
-getRandom;
-
 const createMedia = async (req, res) => {
   try {
     const result = await Media.create(req.body);
@@ -78,7 +76,6 @@ const deleteMedia = async (req, res) => {
 module.exports = {
   createMedia,
   getAllMedia,
-  getRandom,
   getMediaById,
   updateMedia,
   deleteMedia,
