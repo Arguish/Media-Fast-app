@@ -74,7 +74,7 @@
 
 | METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION         |      PARAMS | RETURNS            |
 | ------ | ----------------------------------   |  ----- | ----- | ----------------    | ----------- | ---------------    |
-| GET    | /private_info                            | YES    | Admin   | Get all categories    | -           | [{ private_info }]     |
+| GET    | /private_info                            | YES    | Admin   | Get all private_info    | -           | [{ private_info }]     |
 | GET    | /private_info/me                | YES    | All | Get one private_info    | private_info_id    | { private_info }       |
 | GET    | /private_info/:userId                | YES    | Admin | Get one private_info    | private_info_id    | { private_info }       |
 | PUT    | /private_info/me                | YES    | All | Update self private_info     | private_info_id    | "private_info updated" |
