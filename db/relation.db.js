@@ -1,28 +1,29 @@
+
 const Category = require('../api/models/category.model')
 const Private_Info = require('../api/models/private_info.model')
-
+const Media = require("../api/models/media.model");
+const Platform = require('../api/models/platform.model')
 
 function addRelationsToModels() {
-	try {
+  try {
 
-			// User.hasOne(Address)
-			// Address.belongsTo(User)
+    // User.hasOne(Private_Info)
+    // Private_Info.belongsTo(User)
+    // User.hasOne(Address)
+    // Address.belongsTo(User)
 
-			// Country.hasMany(User)
-			// User.belongsTo(Country)
+    // Country.hasMany(User)
+    // User.belongsTo(Country)
 
+    // Actor.belongsToMany(Movie,
+    // 	{ through: 'Actor_Movies' })
+    // Movie.belongsToMany(Actor,
+    // 	{ through: 'Actor_Movies' })
 
-			// Actor.belongsToMany(Movie,
-			// 	{ through: 'Actor_Movies' })
-			// Movie.belongsToMany(Actor,
-			// 	{ through: 'Actor_Movies' })
-
-            
-		
-		console.log('Relations added to all models')
-	} catch (error) {
-		throw error
-	}
+    console.log('Relations added to all models')
+  } catch (error) {
+    throw error
+  }
 }
 
-module.exports = addRelationsToModels
+module.exports = addRelationsToModels;
