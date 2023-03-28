@@ -6,7 +6,7 @@ const Media = conn.define("media", {
     type: DataTypes.STRING,
     validate: {},
   },
-  desciption: {
+  description: {
     type: DataTypes.STRING,
     validate: {},
   },
