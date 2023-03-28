@@ -1,7 +1,11 @@
-const Media = require("../api/models/media.model");
 
+const Media = require("../api/models/media.model");
+const Platform = require('../api/models/platform.model')
 function addRelationsToModels() {
   try {
+
+    // User.hasOne(Private_Info)
+    // Private_Info.belongsTo(User)
     // User.hasOne(Address)
     // Address.belongsTo(User)
 
@@ -13,9 +17,9 @@ function addRelationsToModels() {
     // Movie.belongsToMany(Actor,
     // 	{ through: 'Actor_Movies' })
 
-    console.log("Relations added to all models");
+    console.log('Relations added to all models')
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
