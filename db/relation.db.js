@@ -4,6 +4,8 @@ const Platform = require('../api/models/platform.model')
 function addRelationsToModels() {
   try {
 
+    // User.hasOne(Private_Info)
+    // Private_Info.belongsTo(User)
     // User.hasOne(Address)
     // Address.belongsTo(User)
 
