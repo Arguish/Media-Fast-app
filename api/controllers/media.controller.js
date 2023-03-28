@@ -27,11 +27,7 @@ const getAllMedia = async (req, res) => {
 
 const getMediaById = async (req, res) => {
   try {
-    const result = await Media.findAll(req.body, {
-      where: {
-        id: req.params.mediaId,
-      },
-    });
+    const result = await Media.findByPk(req.params.mediaId);
     if (!result) {
       res.status(404).send("Media not found");
     }
@@ -59,7 +55,7 @@ const updateMedia = async (req, res) => {
 
 const deleteMedia = async (req, res) => {
   try {
-    const result = await Media.destroy(req.body, {
+    const result = await Media.destroy({
       where: {
         id: req.params.mediaId,
       },
