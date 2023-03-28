@@ -1,5 +1,13 @@
-const router = require('express').Router()
 
+const router = require("express").Router();
+//
 router.use('/platform', require('./platform.route'))
 router.use('/user', require('./user.route'))
-module.exports = router
+router.use("/media", require("./media.route"));
+
+router.get("/", (req, res) => {
+  res.send("API OK ^,_,^");
+});
+
+module.exports = router;
+
