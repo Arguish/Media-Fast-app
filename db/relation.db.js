@@ -1,6 +1,9 @@
 
+const Category = require('../api/models/category.model')
+const Private_Info = require('../api/models/private_info.model')
 const Media = require("../api/models/media.model");
 const Platform = require('../api/models/platform.model')
+
 function addRelationsToModels() {
   try {
 
