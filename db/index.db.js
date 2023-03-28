@@ -18,4 +18,18 @@ async function checkConnection() {
 	}
 }
 
-module.exports= checkConnection
+async function syncModels(value) {
+	const state = {
+		alter: { alter: true },
+		force: { force: true },
+	}
+
+	try {
+		await conn.sync(state[value] || '')
+		console.log(`All models were synchronized successfully using sync(${JSON.stringify(state[value]) || ''}).`)
+	} catch (error) {
+		throw error
+	}
+}
+
+module.exports = {checkConnection, syncModels}

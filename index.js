@@ -4,7 +4,9 @@ const express = require('express')
 const api = express()
 const morgan = require('morgan')
 const env = process.env
-const {checkConnection} = require('./db/index.db.js')
+const {checkConnection,syncModels} = require('./db/index.db.js')
+const addRelationsToModels = require('./db/relation.db.js')
+
 
 
 function initializeAndListenWithExpress() {
@@ -20,6 +22,8 @@ function initializeAndListenWithExpress() {
 
 async function startAPI() {
 	await initializeAndListenWithExpress()
+	await syncModels('force')
+	await addRelationsToModels()
 }
 
 startAPI()
