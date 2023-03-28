@@ -22,7 +22,7 @@ function initializeAndListenWithExpress() {
 
 async function startAPI() {
 	await initializeAndListenWithExpress()
-	await syncModels('force')
+	await syncModels('alter')
 	await addRelationsToModels()
 	console.log('Todo ok')
 }
