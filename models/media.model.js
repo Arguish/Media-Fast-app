@@ -4,7 +4,6 @@ const { conn } = require("../../db/index.db");
 const Media = conn.define("media", {
   title: {
     type: DataTypes.STRING,
-    allowNull: false,
     unique: true,
     validate: {},
   },
