@@ -75,12 +75,12 @@
 | METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION         |      PARAMS | RETURNS            |
 | ------ | ----------------------------------   |  ----- | ----- | ----------------    | ----------- | ---------------    |
 | GET    | /private_info                            | YES    | Admin   | Get all private_info    | -           | [{ private_info }]     |
-| GET    | /private_info/me                | YES    | All | Get one private_info    | private_info_id    | { private_info }       |
+| GET    | /private_info/me                | YES    | All | Get own private_info    | private_info_id    | { private_info }       |
 | GET    | /private_info/:userId                | YES    | Admin | Get one private_info    | private_info_id    | { private_info }       |
-| PUT    | /private_info/me                | YES    | All | Update self private_info     | private_info_id    | "private_info updated" |
+| PUT    | /private_info/me                | YES    | All | Update own private_info     | private_info_id    | "private_info updated" |
 | PUT    | /private_info/:private_infoId                | YES    | Admin | Update private_info     | private_info_id    | "private_info updated" |
 | POST    | /private_info                | YES    | Admin | Creates one private_info    | private_info_id    | { private_info }       |
-| DELETE | /private_info/me                | YES    | All | Remove self private_info | private_info_id    | "private_info deleted" |
+| DELETE | /private_info/me                | YES    | All | Remove own private_info | private_info_id    | "private_info deleted" |
 | DELETE | /private_info/:private_infoId                | YES    | Admin | Remove one private_info | private_info_id    | "private_info deleted" |
 
 
