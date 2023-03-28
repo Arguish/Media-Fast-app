@@ -1,4 +1,5 @@
-
+const Category = require('../api/models/category.model')
+const Private_Info = require('../api/models/private_info.model')
 
 
 function addRelationsToModels() {
