@@ -48,7 +48,7 @@
 | METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION         |      PARAMS | RETURNS            |
 | ------ | ----------------------------------   |  ----- | ----- | ----------------    | ----------- | ---------------    |
 | GET    | /platform                            | YES    | All   | Get all platform    | -           | [{ platform }]     |
-| GET    | /platform/:platformId                | YES    | Admin | Get one platform    | media_id    | { platform }       |
+| GET    | /platform/:platformId                | YES    | All   | Get one platform    | media_id    | { platform }       |
 | PUT    | /platform/:platformId                | YES    | Admin | Update platform     | media_id    | "Platform updated" |
 | POST   | /platform                            | YES    | Admin | Create  platform    | body        | { platform }       |
 | DELETE | /platform/:platformId                | YES    | Admin | Remove one platform | media_id    | "Platform deleted" |

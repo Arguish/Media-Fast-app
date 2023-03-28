@@ -3,6 +3,7 @@ const router = require("express").Router();
 const {} = require("../controllers/media.controller.js");
 //
 
+
 //C
 router.post("/", (req, res) => res.send("createMedia"));
 
@@ -16,5 +17,6 @@ router.put("/:mediaId", (req, res) => res.send("updateMedia"));
 
 //D
 router.delete("/:mediaId", (req, res) => res.send("deleteMedia"));
+
 
 module.exports = router;
