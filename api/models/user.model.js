@@ -11,11 +11,11 @@ const User = conn.define(
     },
     img_url: {
       type: DataTypes.STRING,
-      default: 'https://www.gravatar.com/robohash/205e460b439e2e57482ec07740c08d40?f=y&s=400'
+      defaultValue: 'https://www.gravatar.com/robohash/205e460b439e2e57482ec07740c08d40?f=y&s=400'
     },
     role: {
       type: DataTypes.ENUM('admin', 'user'),
-      default: 'user'
+      defaultValue: 'user'
     },
   }
 )
