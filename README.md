@@ -4,88 +4,85 @@
 
 ### Auth Endpoints
 
-| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION           | PARAMS                                                                                | RETURNS |
+### Auth Endpoints
+
+
+| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION           |      PARAMS                                                                           | RETURNS |
 | ------ | ------------ | ----- | ---- | --------------------- | ------------------------------------------------------------------------------------- | ------- |
 | POST   | /auth/signup | -     | -    | User Sign Up          | user_name, user_nickname, image_url, email, date_of_birth, password, confirm_password | token   |
 | POST   | /auth/login  | -     | -    | Delete skills from DB | email, password                                                                       | token   |
 
-### Users Endpoints
 
-| METHOD | ENDPOINT                                  | TOKEN | ROLE  | DESCRIPTION                    | PARAMS            | RETURNS              |
-| ------ | ----------------------------------------- | ----- | ----- | ------------------------------ | ----------------- | -------------------- |
-| GET    | /users/all                                | YES   | Admin | Get all users                  | -                 | [{ users }]          |
-| GET    | /user                                     | YES   | All   | Get own user                   | user_id           | { user }             |
-| GET    | /users/:userId                            | YES   | Admin | Get one user                   | user_id           | { user }             |
-| PUT    | /users/:userId                            | YES   | Admin | Update user                    | user_id           | "User updated"       |
-| POST   | /users/me                                 | YES   | All   | Update own user                | user_id           | "User updated"       |
-| DELETE | /users/:userId                            | YES   | Admin | Remove one user                | user_id           | "Profile deleted"    |
-| DELETE | /users/me                                 | YES   | All   | Update own user                | user_id           | "User updated"       |
-| GET    | /users/:userId/preferences                | YES   | All   | Get user preferences           | user_id           | [{user.preferences}] |
-| POST   | /users/:userId/preferences/media/:mediaId | YES   | All   | Add user select to preferences | user_id, media_id | [{user.preferences}] |
+### User Endpoints
+
+
+| METHOD | ENDPOINT                                 | TOKEN | ROLE  | DESCRIPTION                    |      PARAMS       | RETURNS              |
+| ------ | -----------------------------------------| ----- | ----- | ------------------------------ | ----------------- | -------------------- |
+| GET    | /user                               	    | YES   | Admin | Get all users                  | -                 | [{ users }]          |
+| GET    | /user/me                                 | YES   | All   | Get own user                   | user_id           | { user }             |
+| GET    | /user/me/user_media		            | YES   | All   | Get user_media                 | user_id           | [{user.preferences}] |
+| GET    | /user/:userId                            | YES   | Admin | Get one user                   | user_id           | { user }             |
+| GET    | /user/:userId/user_media		    | YES   | Admin | Get user_media                 | user_id           | [{user.preferences}] |
+| PUT    | /user/me                           	    | YES   | All   | Update own user                | user_id           | "User updated"       |
+| PUT    | /user/:userId                            | YES   | Admin | Update user                    | user_id           | "User updated"       |
+| POST   | /user/me/user_media/:mediaId 	    | YES   | All   | Add user select to user_media  | user_id, media_id | [{user.preferences}] |
+| POST   | /user/:userId                            | YES   | Admin | Create user                    | user_id           | "User created"       |
+| DELETE | /user/me                                 | YES   | All   | Remove own user                | user_id           | "User updated"       |
+| DELETE | /user/:userId                            | YES   | Admin | Remove one user                | user_id           | "Profile deleted"    |
+
 
 ### Media Endpoints
 
-| METHOD | ENDPOINT         | TOKEN | ROLE  | DESCRIPTION      | PARAMS   | RETURNS         |
-| ------ | ---------------- | ----- | ----- | ---------------- | -------- | --------------- |
-| GET    | /media           | YES   | All   | Get all media    | -        | [{ media }]     |
-| POST   | /media           | YES   | Admin | Create media     | -        | { media }       |
-| GET    | /media/:mediaId  | YES   | All   | Get one media    | media_id | { media }       |
-| PUT    | /media/:mediaId  | YES   | Admin | Update media     | media_id | "Media updated" |
-| DELETE | /media/:mediaId  | YES   | Admin | Remove one media | media_id | "Media deleted" |
-| GET    | /media/newRandom | YES   | All   | Get random media | media_id | { media }       |
+
+| METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION      |      PARAMS | RETURNS         |
+| ------ | ----------------------------------   |  ----- | ----- | ---------------- | ----------- | --------------- |
+| GET    | /media                               | YES    | All   | Get all media    | -           | [{ media }]     |
+| GET    | /media/newRandom  		        | YES    | All   | Get random media | media_id    | { media }       |
+| GET    | /media/:mediaId                      | YES    | All   | Get one media    | media_id    | { media }       |
+| PUT    | /media/:mediaId                      | YES    | Admin | Update media     | media_id    | "Media updated" |
+| POST   | /media                               | YES    | Admin | Create  media    | body        | { media }       |
+| DELETE | /media/:mediaId                      | YES    | Admin | Remove one media | media_id    | "Media deleted" |
+
 
 ### Platform Endpoints
 
-| METHOD | ENDPOINT              | TOKEN | ROLE  | DESCRIPTION         | PARAMS   | RETURNS            |
-| ------ | --------------------- | ----- | ----- | ------------------- | -------- | ------------------ |
-| GET    | /platform             | YES   | All   | Get all platform    | -        | [{ platform }]     |
-| POST   | /platform             | YES   | Admin | Create platform     | -        | { platform }       |
-| GET    | /platform/:platformId | YES   | Admin | Get one platform    | media_id | { platform }       |
-| PUT    | /platform/:platformId | YES   | Admin | Update platform     | media_id | "Platform updated" |
-| DELETE | /platform/:platformId | YES   | Admin | Remove one platform | media_id | "Platform deleted" |
 
-### Preferences Endpoints
+| METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION         |      PARAMS | RETURNS            |
+| ------ | ----------------------------------   |  ----- | ----- | ----------------    | ----------- | ---------------    |
+| GET    | /platform                            | YES    | All   | Get all platform    | -           | [{ platform }]     |
+| GET    | /platform/:platformId                | YES    | Admin | Get one platform    | media_id    | { platform }       |
+| PUT    | /platform/:platformId                | YES    | Admin | Update platform     | media_id    | "Platform updated" |
+| POST   | /platform                            | YES    | Admin | Create  platform    | body        | { platform }       |
+| DELETE | /platform/:platformId                | YES    | Admin | Remove one platform | media_id    | "Platform deleted" |
 
-| METHOD | ENDPOINT              | TOKEN | ROLE  | DESCRIPTION         | PARAMS   | RETURNS            |
-| ------ | --------------------- | ----- | ----- | ------------------- | -------- | ------------------ |
-| GET    | /platform             | YES   | All   | Get all platform    | -        | [{ platform }]     |
-| POST   | /platform             | YES   | Admin | Create platform     | -        | { platform }       |
-| GET    | /platform/:platformId | YES   | Admin | Get one platform    | media_id | { platform }       |
-| PUT    | /platform/:platformId | YES   | Admin | Update platform     | media_id | "Platform updated" |
-| DELETE | /platform/:platformId | YES   | Admin | Remove one platform | media_id | "Platform deleted" |
 
-### User_media Endpoints
-
-| METHOD | ENDPOINT                  | TOKEN | ROLE  | DESCRIPTION           | PARAMS        | RETURNS              |
-| ------ | ------------------------- | ----- | ----- | --------------------- | ------------- | -------------------- |
-| GET    | /user_media               | YES   | Admin | Get all user_media    | -             | [{ user_media }]     |
-| GET    | /user_media/:user_mediaId | YES   | All   | Get one user_media    | user_media_id | { user_media }       |
-| PUT    | /user_media/self          | YES   | All   | Update user_media     | user_media_id | "user_media updated" |
-| PUT    | /user_media/:user_mediaId | YES   | Admin | Update user_media     | user_media_id | "user_media updated" |
-| DELETE | /user_media/:user_mediaId | YES   | Admin | Remove one user_media | user_media_id | "user_media deleted" |
 
 ### Category Endpoints
 
-| METHOD | ENDPOINT              | TOKEN | ROLE  | DESCRIPTION          | PARAMS      | RETURNS            |
-| ------ | --------------------- | ----- | ----- | -------------------- | ----------- | ------------------ |
-| GET    | /category             | YES   | All   | Get all categories   | -           | [{ category }]     |
-| POST   | /category             | YES   | Admin | Creates one category | category_id | { category }       |
-| GET    | /category/:categoryId | YES   | All   | Get one category     | category_id | { category }       |
-| PUT    | /category/:categoryId | YES   | Admin | Update category      | category_id | "category updated" |
-| DELETE | /category/:categoryId | YES   | Admin | Remove one category  | category_id | "category deleted" |
+
+| METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION         |      PARAMS | RETURNS            |
+| ------ | ----------------------------------   |  ----- | ----- | ----------------    | ----------- | ---------------    |
+| GET    | /category                            | YES    | All   | Get all categories    | -           | [{ category }]     |
+| GET    | /category/:categoryId                | YES    | All | Get one category    | category_id    | { category }       |
+| PUT    | /category/:categoryId                | YES    | Admin | Update category     | category_id    | "category updated" |
+| POST   | /category                		| YES    | Admin | Creates one category    | category_id    | { category }       |
+| DELETE | /category/:categoryId                | YES    | Admin | Remove one category | category_id    | "category deleted" |
+
 
 ### Private_info Endpoints
 
-| METHOD | ENDPOINT                      | TOKEN | ROLE  | DESCRIPTION              | PARAMS          | RETURNS                |
-| ------ | ----------------------------- | ----- | ----- | ------------------------ | --------------- | ---------------------- |
-| GET    | /private_info                 | YES   | Admin | Get all categories       | -               | [{ private_info }]     |
-| POST   | /private_info                 | YES   | Admin | Creates one private_info | private_info_id | { private_info }       |
-| GET    | /private_info/self            | YES   | All   | Get one private_info     | private_info_id | { private_info }       |
-| GET    | /private_info/:userId         | YES   | Admin | Get one private_info     | private_info_id | { private_info }       |
-| PUT    | /private_info/self            | YES   | All   | Update self private_info | private_info_id | "private_info updated" |
-| DELETE | /private_info/self            | YES   | All   | Remove self private_info | private_info_id | "private_info deleted" |
-| PUT    | /private_info/:private_infoId | YES   | Admin | Update private_info      | private_info_id | "private_info updated" |
-| DELETE | /private_info/:private_infoId | YES   | Admin | Remove one private_info  | private_info_id | "private_info deleted" |
+
+| METHOD | ENDPOINT                             |  TOKEN | ROLE  | DESCRIPTION         |      PARAMS | RETURNS            |
+| ------ | ----------------------------------   |  ----- | ----- | ----------------    | ----------- | ---------------    |
+| GET    | /private_info                            | YES    | Admin   | Get all categories    | -           | [{ private_info }]     |
+| GET    | /private_info/me                | YES    | All | Get one private_info    | private_info_id    | { private_info }       |
+| GET    | /private_info/:userId                | YES    | Admin | Get one private_info    | private_info_id    | { private_info }       |
+| PUT    | /private_info/me                | YES    | All | Update self private_info     | private_info_id    | "private_info updated" |
+| PUT    | /private_info/:private_infoId                | YES    | Admin | Update private_info     | private_info_id    | "private_info updated" |
+| POST    | /private_info                | YES    | Admin | Creates one private_info    | private_info_id    | { private_info }       |
+| DELETE | /private_info/me                | YES    | All | Remove self private_info | private_info_id    | "private_info deleted" |
+| DELETE | /private_info/:private_infoId                | YES    | Admin | Remove one private_info | private_info_id    | "private_info deleted" |
+
 
 ## Analisis
 
