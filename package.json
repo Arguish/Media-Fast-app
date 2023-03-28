@@ -4,6 +4,7 @@
   "description": "<img src=\"https://app.milanote.com/media/p/images/1PGwkP1PR83x1H/tFr/image.png\" width=\"25%\">",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
