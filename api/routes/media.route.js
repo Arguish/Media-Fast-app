@@ -6,6 +6,7 @@ const {
   getMediaById,
   updateMedia,
   deleteMedia,
+  getRandomMedia,
 } = require("../controllers/media.controller.js");
 //
 
@@ -15,6 +16,7 @@ router.post("/", createMedia);
 //R
 router.get("/", getAllMedia);
 router.get("/:mediaId", getMediaById);
+router.get("/random", getRandomMedia);
 
 //U
 router.put("/:mediaId", updateMedia);
