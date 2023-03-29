@@ -1,4 +1,5 @@
 const Media = require("../models/media.model");
+const randPicker = require("random-array-picker");
 
 const createMedia = async (req, res) => {
   try {
@@ -32,6 +33,18 @@ const getMediaById = async (req, res) => {
       res.status(404).send("Media not found");
     }
     res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+const getRandomMedia = async (req, res) => {
+  try {
+    const result = await Media.findAll();
+    if (!result) {
+      res.status(404).send("Media not found");
+    }
+    res.status(200).json(randPicker(result));
   } catch (error) {
     res.status(500).json(error);
   }
@@ -75,4 +88,5 @@ module.exports = {
   getMediaById,
   updateMedia,
   deleteMedia,
+  getRandomMedia,
 };
