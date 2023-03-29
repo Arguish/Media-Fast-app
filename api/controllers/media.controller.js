@@ -1,5 +1,6 @@
 const Media = require("../models/media.model");
 const randPicker = require("random-array-picker");
+const Category = require("../models/category.model");
 
 const createMedia = async (req, res) => {
   try {
@@ -40,7 +41,12 @@ const getMediaById = async (req, res) => {
 
 const getRandomMedia = async (req, res) => {
   try {
-    const result = await Media.findAll();
+    const result = await Media.findAll({
+      include: {
+        model: Category,
+        required: true,
+      },
+    });
     if (!result) {
       res.status(404).send("Media not found");
     }
