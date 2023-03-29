@@ -7,9 +7,8 @@ const register = async (req, res) => {
         req.body.password = bcrypt.hashSync(req.body.password, 10)
         const user = await User.create(req.body)
         const privateinfo1 = await PrivateInfo.create(req.body)
-        console.log(user)
         const result = await privateinfo1.setUser(user)
-        res.status(200).json(result)
+        res.status(200).json(user)
     } catch (error) {
         console.error(error)
         res.status(500).send('Error cannot create user')
@@ -19,7 +18,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
 
     try {
-        const user = await User.findOne({ where: { email: req.body.email } })
+        const user = await PrivateInfo.findOne({ where: { email: req.body.email } })
 
         if (!user) {
             return res.status(403).send('Email or password invalid')

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
-
+const PrivateInfo = require('../models/private_info.model')
 const checkAuth = (req, res, next) => {
     const token = req.headers.token
 
@@ -9,20 +9,25 @@ const checkAuth = (req, res, next) => {
             return res.status(400).send('Invalid token')
         }
 
-        const user = await User.findOne({ where: { email: payload.email } })
+        const privateInfo = await PrivateInfo.findOne({ where: { email: payload.email } })
 
-        if (!user) {
+        if (!privateInfo) {
             return res.status(400).send('Invalid token')
         }
-        res.locals.user = user
-
+        res.locals.privateInfo = privateInfo
+        console.log(res.locals.privateInfo)
         next()
     })
 
 }
 
-const checkAdmin = (req, res, next) => {
-    if (res.locals.user.role === 'admin') {
+const checkAdmin = async (req, res, next) => {
+    const user = await User.findOne({
+        where: {
+            id: res.locals.privateInfo.userId
+        }
+    })
+    if (user.role === 'admin') {
         next()
     } else {
         return res.status(401).send('Unauthorized')

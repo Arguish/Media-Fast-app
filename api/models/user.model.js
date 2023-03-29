@@ -7,7 +7,8 @@ const User = conn.define(
   {
     nickname: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     img_url: {
       type: DataTypes.STRING,
