@@ -127,8 +127,6 @@ const getUserMedia = async (req, res) => {
     }
 }
 
-
-
 const getOwnUserMedia = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
@@ -145,12 +143,27 @@ const getOwnUserMedia = async (req, res) => {
     }
 }
 
+const getOwnUserMediaLimited = async (req, res) => {
+    try {
+        const userId = res.locals.privateInfo.userId
+        const user = await User.findByPk(userId)
+        console.log(user)
+        const result = await user.getMedia({ limit: 4 })
+        if (result) {
+            res.status(200).json(result)
+        } else {
+            res.status(400).send('User wasnt found')
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
 const addMediaToOwnUser = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
         const user = await User.findByPk(userId)
         const media = await Media.findByPk(req.params.mediaId)
-        // console.log(user)
         await user.addMedia(media)
         if (user && media) {
             return res.status(200).send('Media added to user!')

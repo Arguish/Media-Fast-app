@@ -30,7 +30,7 @@
 | METHOD | ENDPOINT         | TOKEN | ROLE  | DESCRIPTION      | PARAMS   | RETURNS         |
 | ------ | ---------------- | ----- | ----- | ---------------- | -------- | --------------- |
 | GET    | /media           | YES   | All   | Get all media    | -        | [{ media }]     |
-| GET    | /media/newRandom | YES   | All   | Get random media | media_id | { media }       |
+| GET    | /media/random | YES   | All   | Get random media | media_id | { media }       |
 | GET    | /media/:mediaId  | YES   | All   | Get one media    | media_id | { media }       |
 | PUT    | /media/:mediaId  | YES   | Admin | Update media     | media_id | "Media updated" |
 | POST   | /media           | YES   | Admin | Create media     | body     | { media }       |
