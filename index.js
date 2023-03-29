@@ -1,7 +1,4 @@
-
-require('dotenv').config()
-
-
+require("dotenv").config();
 
 const express = require("express");
 const api = express();
@@ -11,16 +8,14 @@ const { checkConnection, syncModels } = require("./db/index.db.js");
 const addRelationsToModels = require("./db/relation.db.js");
 
 function initializeAndListenWithExpress() {
+  const api = express()
+    .use(morgan("dev"))
+    .use(express.json())
+    .use("/api", require("./api/routes/index.routes"))
 
-	const api = express()
-		.use(morgan('dev'))
-		.use(express.json())
-		.use('/api', require('./api/routes/index.routes'))
-
-
-		.listen(env.PORT, () => {
-			console.log(`> Listening on port: ${env.PORT}`);
-		});
+    .listen(env.PORT, () => {
+      console.log(`> Listening on port: ${env.PORT}`);
+    });
 }
 
 async function startAPI() {
@@ -30,6 +25,7 @@ async function startAPI() {
 	await syncModels('alter')
 	await initializeAndListenWithExpress()
 	console.log('Todo ok')
+
 
 }
 
