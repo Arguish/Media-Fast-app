@@ -16,7 +16,8 @@ async function getAllPrivateInfo(req, res) {
 
 async function getMyPrivateInfo(req, res) {
     try {
-        const private_info = await PrivateInfo.findOne()
+        const user = res.locals.privateInfo.userId
+        const private_info = await PrivateInfo.findByPk(user)
         if (private_info) {
             return res.status(200).json(private_info)
         } else {
@@ -26,6 +27,7 @@ async function getMyPrivateInfo(req, res) {
         res.status(500).send(error.message)
     }
 }
+
 
 async function getOnePrivateInfo(req, res) {
     try {
@@ -43,9 +45,10 @@ async function getOnePrivateInfo(req, res) {
 
 async function updateMyPrivateInfo(req, res) {
     try {
+        const user = res.locals.privateInfo.userId
         const private_info = await PrivateInfo.update(req.body, {
             where: {
-                id: req.params.private_info.userId,
+                id: user,
             },
         })
         if (private_info) {
@@ -53,6 +56,7 @@ async function updateMyPrivateInfo(req, res) {
         } else {
             return res.status(404).send('Private info not found')
         }
+
     } catch (error) {
         return res.status(500).send(error.message)
     }
@@ -86,6 +90,25 @@ async function createPrivateInfo(req, res) {
     }
 }
 
+async function deleteMyPrivateInfo(req, res) {
+    try {
+        const user = res.locals.privateInfo.userId
+        console.log(user)
+        const private_info = await PrivateInfo.destroy({
+            where: {
+                id: user,
+            },
+        })
+        if (private_info) {
+            return res.status(200).json('Private info deleted')
+        } else {
+            return res.status(404).send('Private info not found')
+        }
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 async function deletePrivateInfo(req, res) {
     try {
         const private_info = await PrivateInfo.destroy({
@@ -107,4 +130,4 @@ async function deletePrivateInfo(req, res) {
 
 
 module.exports = { getAllPrivateInfo, getOnePrivateInfo, updatePrivateInfo,
-    createPrivateInfo, deletePrivateInfo, getMyPrivateInfo, updateMyPrivateInfo }
+    createPrivateInfo, deletePrivateInfo, getMyPrivateInfo, updateMyPrivateInfo, deleteMyPrivateInfo }
