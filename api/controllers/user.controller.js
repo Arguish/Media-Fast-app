@@ -1,5 +1,5 @@
 const User = require('../models/user.model')
-
+const Media = require('../models/media.model')
 
 const getUsers = async (req, res) => {
     try {
@@ -29,7 +29,7 @@ const getOneUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const updated = await User.update(req.body, {
+        const [updated] = await User.update(req.body, {
             where: {
                 id: req.params.userId
             }
@@ -43,6 +43,25 @@ const updateUser = async (req, res) => {
         res.status(500).send(err)
     }
 }
+
+const updateOwnUser = async (req, res) => {
+    try {
+        const [updated] = await User.update(req.body, {
+            where: {
+                id: res.locals.privateInfo.userId
+            }
+        })
+        if (updated) {
+            res.status(200).json({ message: 'User updated' })
+        } else {
+            res.status(400).send('User wasnt found')
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
+
 
 const createUser = async (req, res) => {
     try {
@@ -66,9 +85,84 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const deleteOwnUser = async (req, res) => {
+    try {
+        const deleted = await User.destroy({
+            where: {
+                id: res.locals.privateInfo.userId
+            }
+        })
+        return res.status(200).json({ message: 'User deleted.' })
+    } catch (err) {
+        return res.status(500).send(err)
+    }
+}
 
+const getOwnUser = async (req, res) => {
+    try {
+        const userId = res.locals.privateInfo.userId
+        const result = await User.findByPk(userId)
+        if (result) {
+            res.status(200).json(result)
+        } else {
+            res.status(400).send('User wasnt found')
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
+const getUserMedia = async (req, res) => {
+    try {
+        const userId = req.params.userId
+        const user = await User.findByPk(userId)
+        const result = await user.getMedia()
+        if (result) {
+            res.status(200).json(result)
+        } else {
+            res.status(400).send('User wasnt found')
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
+
+
+const getOwnUserMedia = async (req, res) => {
+    try {
+        const userId = res.locals.privateInfo.userId
+        const user = await User.findByPk(userId)
+        console.log(user)
+        const result = await user.getMedia()
+        if (result) {
+            res.status(200).json(result)
+        } else {
+            res.status(400).send('User wasnt found')
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
+const addMediaToOwnUser = async (req, res) => {
+    try {
+        const userId = res.locals.privateInfo.userId
+        const user = await User.findByPk(userId)
+        const media = await Media.findByPk(req.params.mediaId)
+        // console.log(user)
+        await user.addMedia(media)
+        if (user && media) {
+            return res.status(200).send('Media added to user!')
+        } else {
+            return res.status(400).send('User or media wasnt found')
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
 
 
 module.exports = {
-    getOneUser, getUsers, updateUser, createUser, deleteUser
+    getOneUser, getUsers, updateUser, createUser, deleteUser, getOwnUser, getOwnUserMedia, addMediaToOwnUser, getUserMedia, updateOwnUser, deleteOwnUser
 }

@@ -1,21 +1,20 @@
-const { getUsers, getOneUser, updateUser, createUser, deleteUser } = require('../controllers/user.controller')
+const { getUsers, getOneUser, updateUser, createUser, deleteUser, getOwnUser, getOwnUserMedia, addMediaToOwnUser, getUserMedia, updateOwnUser, deleteOwnUser } = require('../controllers/user.controller')
 const { checkAdmin, checkAuth } = require('../middleware/auth')
 
 const router = require('express').Router()
 
 router.get('/', checkAdmin, getUsers)
-// /me pending
-// router.get('/me', getUsers)
-// router.get('/me/user_media', getUsers)
+router.get('/me', checkAuth, getOwnUser)
+router.get('/me/user_media', getOwnUserMedia)
 
-router.get('/:userId', checkAdmin, getOneUser)
-// router.get('/:userId/user_media', getUserMedia)
+router.get('/:userId', checkAuth, checkAdmin, getOneUser)
+router.get('/:userId/user_media', checkAuth, checkAdmin, getUserMedia)
 
-// router.put('/me', updateMe)
-router.put('/:userId', checkAdmin, updateUser)
+router.put('/me', checkAuth, updateOwnUser)
+router.put('/:userId', checkAuth, checkAdmin, updateUser)
 router.post('/', checkAdmin, createUser)
-// router.post('/me/user_media/:mediaId', addUserMedia)
-// router.delete('/me', deleteMe)
+router.post('/me/user_media/:mediaId', checkAuth, addMediaToOwnUser)
+router.delete('/me', checkAuth, deleteOwnUser)
 router.delete('/:userId', checkAuth, checkAdmin, deleteUser)
 
 module.exports = router
