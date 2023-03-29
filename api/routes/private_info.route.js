@@ -1,16 +1,16 @@
 const router = require('express').Router()
 
 
-const { getAllPrivate_Info, getOnePrivate_Info, updatePrivate_Info, createPrivate_Info, deletePrivate_Info } = require('../controllers/private_info.controller')
+const { getAllPrivateInfo, getOnePrivateInfo, updatePrivateInfo, createPrivateInfo, deletePrivateInfo } = require('../controllers/private_info.controller')
 
-router.get('/', getAllPrivate_Info)
-//router.get('/me', getMyPrivate_Info)??
-router.get('/:userId', getOnePrivate_Info)
-//router.put('/me', updateMyPrivate_Info)
-router.put('/:private_infoId', updatePrivate_Info)
-router.post('/', createPrivate_Info)
-//router.delete('/me', deleteMyPrivate_Info)
-router.delete('/:private_infoId', deletePrivate_Info)
+router.get('/', getAllPrivateInfo)
+//router.get('/me', getMyPrivateInfo)??
+router.get('/:userId', getOnePrivateInfo)
+//router.put('/me', updateMyPrivateInfo)
+router.put('/:private_infoId', updatePrivateInfo)
+router.post('/', createPrivateInfo)
+//router.delete('/me', deleteMyPrivateInfo)
+router.delete('/:private_infoId', deletePrivateInfo)
 
 
 module.exports = router

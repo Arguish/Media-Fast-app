@@ -1,18 +1,18 @@
 const { DataTypes } = require('sequelize')
-const {conn} = require('../../db/index.db')
+const { conn } = require('../../db/index.db')
 
 
-const Private_Info = conn.define(
-    'private_info', 
+const PrivateInfo = conn.define(
+    'private_info',
     {
-        email : {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
-        }, 
-        date_of_birth : {
-            type:DataTypes.DATE, 
+        },
+        date_of_birth: {
+            type: DataTypes.DATE,
             allowNull: false
-        }, 
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false
@@ -20,4 +20,4 @@ const Private_Info = conn.define(
     }
 )
 
-module.exports = Private_Info
+module.exports = PrivateInfo

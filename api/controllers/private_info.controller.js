@@ -1,22 +1,9 @@
-const Private_Info = require('../models/private_info.model')
+const PrivateInfo = require('../models/private_info.model')
 
 
-async function getAllPrivate_Info(req, res){
- try{
-    const private_info= await Private_Info.findAll()
-    if(private_info){
-        return res.status(200).json(private_info)
-    }else{
-        return res.status(404).send('Private info not found')
-    }
- } catch(error){
-    res.status(500).send(error.message)
- }
-}
-
-async function getOnePrivate_Info(req,res){
+async function getAllPrivateInfo(req, res) {
     try {
-        const private_info = await Private_Info.findByPk(req.params.userId)
+        const private_info = await PrivateInfo.findAll()
         if (private_info) {
             return res.status(200).json(private_info)
         } else {
@@ -27,9 +14,22 @@ async function getOnePrivate_Info(req,res){
     }
 }
 
-async function updatePrivate_Info (req, res){
+async function getOnePrivateInfo(req, res) {
     try {
-        const private_info = await Private_Info.update(req.body, {
+        const private_info = await PrivateInfo.findByPk(req.params.userId)
+        if (private_info) {
+            return res.status(200).json(private_info)
+        } else {
+            return res.status(404).send('Private info not found')
+        }
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
+
+async function updatePrivateInfo(req, res) {
+    try {
+        const private_info = await PrivateInfo.update(req.body, {
             where: {
                 id: req.params.private_infoId,
             },
@@ -46,18 +46,18 @@ async function updatePrivate_Info (req, res){
 
 
 
-async function createPrivate_Info(req, res) {
+async function createPrivateInfo(req, res) {
     try {
-        const private_info = await Private_Info.create(req.body)
+        const private_info = await PrivateInfo.create(req.body)
         return res.status(200).json({ message: 'Private info created', private_info: private_info })
     } catch (error) {
         res.status(500).send(error.message)
     }
 }
 
-async function deletePrivate_Info (req,res){
+async function deletePrivateInfo(req, res) {
     try {
-        const private_info = await Private_Info.destroy({
+        const private_info = await PrivateInfo.destroy({
             where: {
                 id: req.params.private_infoId,
             },
@@ -75,4 +75,4 @@ async function deletePrivate_Info (req,res){
 
 
 
-module.exports = { getAllPrivate_Info, getOnePrivate_Info, updatePrivate_Info, createPrivate_Info, deletePrivate_Info }
+module.exports = { getAllPrivateInfo, getOnePrivateInfo, updatePrivateInfo, createPrivateInfo, deletePrivateInfo }

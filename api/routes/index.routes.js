@@ -6,6 +6,7 @@ router.use('/user', require('./user.route'))
 router.use("/media", require("./media.route"));
 router.use('/category', require('./category.route'))
 router.use('/private_info', require('./private_info.route'))
+router.use('/auth', require('./auth.route'))
 
 router.get("/", (req, res) => {
   res.send("API OK ^,_,^");

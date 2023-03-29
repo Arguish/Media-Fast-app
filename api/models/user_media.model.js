@@ -5,7 +5,7 @@ const User_Media = conn.define(
     'user_media',
     {
         status: {
-            type: DataTypes.ENUM('finished,rejected,pending, notOffered'),
+            type: DataTypes.ENUM('finished', 'rejected', 'pending', 'notOffered'),
             defaultValue: 'notOffered'
         },
         rejected_counter: {
@@ -20,7 +20,7 @@ const User_Media = conn.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0
-        }
+        },
     }
 )
 
