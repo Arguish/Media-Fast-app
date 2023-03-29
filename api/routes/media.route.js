@@ -16,7 +16,7 @@ router.post("/", createMedia);
 //R
 router.get("/", getAllMedia);
 router.get("/:mediaId", getMediaById);
-router.get("/:mediaId/random", getRandomMedia);
+router.get("/random", getRandomMedia);
 
 //U
 router.put("/:mediaId", updateMedia);

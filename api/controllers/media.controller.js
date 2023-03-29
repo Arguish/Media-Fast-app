@@ -41,12 +41,7 @@ const getMediaById = async (req, res) => {
 
 const getRandomMedia = async (req, res) => {
   try {
-    const result = await Media.findAll({
-      include: {
-        model: Category,
-        required: true,
-      },
-    });
+    const result = await Media.findAll();
     if (!result) {
       res.status(404).send("Media not found");
     }
