@@ -15,7 +15,6 @@ const checkAuth = (req, res, next) => {
             return res.status(400).send('Invalid token')
         }
         res.locals.privateInfo = privateInfo
-        console.log(res.locals.privateInfo)
         next()
     })
 
