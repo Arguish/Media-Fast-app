@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const { conn } = require('../../db/index.db')
 
-const User_Media = conn.define(
+const UserMedia = conn.define(
     'user_media',
     {
         status: {
@@ -24,4 +24,4 @@ const User_Media = conn.define(
     }
 )
 
-module.exports = User_Media
+module.exports = UserMedia

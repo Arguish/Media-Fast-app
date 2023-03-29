@@ -19,11 +19,14 @@ function initializeAndListenWithExpress() {
 }
 
 async function startAPI() {
-  await checkConnection();
-  await addRelationsToModels();
-  await syncModels("");
-  await initializeAndListenWithExpress();
-  console.log("Todo ok");
+
+	await checkConnection()
+	await addRelationsToModels()
+	await syncModels('alter')
+	await initializeAndListenWithExpress()
+	console.log('Todo ok')
+
+
 }
 
 startAPI();
