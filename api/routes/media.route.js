@@ -8,6 +8,7 @@ const {
   updateMedia,
   deleteMedia,
   getRandomMedia,
+  idRandom,
 } = require("../controllers/media.controller.js");
 //
 
@@ -18,6 +19,7 @@ router.post("/", checkAuth, checkAdmin, createMedia);
 router.get("/", checkAuth, getAllMedia);
 router.get("/random", checkAuth, getRandomMedia);
 router.get("/:mediaId", checkAuth, getMediaById);
+router.get("/me/random", idRandom);
 
 //U
 router.put("/:mediaId", checkAuth, checkAdmin, updateMedia);

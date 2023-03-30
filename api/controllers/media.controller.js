@@ -1,6 +1,7 @@
 const Media = require("../models/media.model");
 const randPicker = require("random-array-picker");
 const Category = require("../models/category.model");
+const User = require("../models/user.model");
 
 const createMedia = async (req, res) => {
   try {
@@ -36,6 +37,32 @@ const getMediaById = async (req, res) => {
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json(error);
+  }
+};
+
+const idRandom = async (req, res) => {
+  try {
+    const userId = res.locals.privateInfo.userId;
+    const result = await User.findAll({
+      include: {
+        model: Category,
+        required: true,
+      },
+      include: {
+        model: Media,
+        required: true,
+      },
+      where: {
+        id: userId,
+      },
+    });
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res.status(400).send("User wasnt found");
+    }
+  } catch (err) {
+    res.status(500).send(err);
   }
 };
 
@@ -90,4 +117,5 @@ module.exports = {
   updateMedia,
   deleteMedia,
   getRandomMedia,
+  idRandom,
 };

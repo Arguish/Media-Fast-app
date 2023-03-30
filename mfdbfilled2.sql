@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,14 +21,14 @@
 
 DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `media`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `media` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE `media` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `media` (
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
-INSERT INTO `media` VALUES (1,'Breaking Bad','A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.','show',1,101,'2023-03-30 09:57:24','2023-03-30 09:57:24'),(2,'The Godfather','The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.','movie',1,1,'2023-03-30 09:57:53','2023-03-30 09:57:53'),(3,'Stranger Things','When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.','show',2,204,'2023-03-30 09:58:04','2023-03-30 09:58:04'),(4,'The Dark Knight','When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.','movie',1,1,'2023-03-30 09:58:19','2023-03-30 09:58:19'),(5,'Game of Thrones','Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.','show',3,309,'2023-03-30 09:58:31','2023-03-30 09:58:31'),(6,'Inception','A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.','movie',1,1,'2023-03-30 09:58:48','2023-03-30 09:58:48'),(7,'Breaking Bad','A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.','show',2,203,'2023-03-30 09:59:31','2023-03-30 09:59:31'),(8,'The Matrix','A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.','movie',1,1,'2023-03-30 09:59:45','2023-03-30 09:59:45'),(9,'Stranger Things','When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.','show',1,105,'2023-03-30 09:59:53','2023-03-30 09:59:53');
+INSERT INTO `media` VALUES (1,'Breaking Bad','A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.','show',1,101,'2023-03-30 0sql76098419:57:24','2023-03-30 09:57:24'),(2,'The Godfather','The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.','movie',1,1,'2023-03-30 09:57:53','2023-03-30 09:57:53'),(3,'Stranger Things','When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.','show',2,204,'2023-03-30 09:58:04','2023-03-30 09:58:04'),(4,'The Dark Knight','When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.','movie',1,1,'2023-03-30 09:58:19','2023-03-30 09:58:19'),(5,'Game of Thrones','Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.','show',3,309,'2023-03-30 09:58:31','2023-03-30 09:58:31'),(6,'Inception','A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.','movie',1,1,'2023-03-30 09:58:48','2023-03-30 09:58:48'),(7,'Breaking Bad','A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.','show',2,203,'2023-03-30 09:59:31','2023-03-30 09:59:31'),(8,'The Matrix','A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.','movie',1,1,'2023-03-30 09:59:45','2023-03-30 09:59:45'),(9,'Stranger Things','When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.','show',1,105,'2023-03-30 09:59:53','2023-03-30 09:59:53');
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +77,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `media_category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `media_category` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `media_category` (
   KEY `categoryId` (`categoryId`),
   CONSTRAINT `media_category_ibfk_1` FOREIGN KEY (`mediumId`) REFERENCES `media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `media_category_ibfk_2` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `media_platform`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `media_platform` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `media_platform` (
   KEY `platformId` (`platformId`),
   CONSTRAINT `media_platform_ibfk_1` FOREIGN KEY (`mediumId`) REFERENCES `media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `media_platform_ibfk_2` FOREIGN KEY (`platformId`) REFERENCES `platforms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `platforms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `platforms` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -143,7 +143,7 @@ CREATE TABLE `platforms` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `platforms` (
 
 LOCK TABLES `platforms` WRITE;
 /*!40000 ALTER TABLE `platforms` DISABLE KEYS */;
-INSERT INTO `platforms` VALUES (1,'Netflix','https://www.netflix.com/','2023-03-30 10:05:20','2023-03-30 10:05:20'),(2,'Amazon Prime Video','https://www.amazon.com/primevideo','2023-03-30 10:05:40','2023-03-30 10:05:40'),(3,'Hulu','https://www.hulu.com/','2023-03-30 10:05:51','2023-03-30 10:05:51'),(4,'Disney+','https://www.disneyplus.com/','2023-03-30 10:05:57','2023-03-30 10:05:57'),(5,'HBO Max','https://www.hbomax.com/','2023-03-30 10:06:06','2023-03-30 10:06:06'),(6,'Peacock','https://www.peacocktv.com/','2023-03-30 10:06:30','2023-03-30 10:06:30'),(7,'Apple TV+','https://www.apple.com/apple-tv-plus','2023-03-30 10:06:34','2023-03-30 10:06:34'),(8,'Paramount+','https://www.paramountplus.com/','2023-03-30 10:06:37','2023-03-30 10:06:37'),(9,'Crave','https://www.crave.ca/','2023-03-30 10:06:41','2023-03-30 10:06:41');
+INSERT INTO `platforms` VALUES (100,'Netflix','https://www.netflix.com/','2023-03-30 10:05:20','2023-03-30 10:05:20'),(200,'Amazon Prime Video','https://www.amazon.com/primevideo','2023-03-30 10:05:40','2023-03-30 10:05:40'),(300,'Hulu','https://www.hulu.com/','2023-03-30 10:05:51','2023-03-30 10:05:51'),(400,'Disney+','https://www.disneyplus.com/','2023-03-30 10:05:57','2023-03-30 10:05:57'),(500,'HBO Max','https://www.hbomax.com/','2023-03-30 10:06:06','2023-03-30 10:06:06'),(600,'Peacock','https://www.peacocktv.com/','2023-03-30 10:06:30','2023-03-30 10:06:30'),(700,'Apple TV+','https://www.apple.com/apple-tv-plus','2023-03-30 10:06:34','2023-03-30 10:06:34'),(800,'Paramount+','https://www.paramountplus.com/','2023-03-30 10:06:37','2023-03-30 10:06:37'),(900,'Crave','https://www.crave.ca/','2023-03-30 10:06:41','2023-03-30 10:06:41');
 /*!40000 ALTER TABLE `platforms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +162,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `private_infos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `private_infos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -174,7 +174,7 @@ CREATE TABLE `private_infos` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `private_infos_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user_category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `user_category` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -203,7 +203,7 @@ CREATE TABLE `user_category` (
   KEY `categoryId` (`categoryId`),
   CONSTRAINT `user_category_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_category_ibfk_2` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +221,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user_media`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `user_media` (
   `status` enum('finished','rejected','pending','notOffered') DEFAULT 'notOffered',
   `rejected_counter` int DEFAULT '0',
@@ -235,7 +235,7 @@ CREATE TABLE `user_media` (
   KEY `mediumId` (`mediumId`),
   CONSTRAINT `user_media_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_media_ibfk_2` FOREIGN KEY (`mediumId`) REFERENCES `media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +254,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nickname` varchar(255) NOT NULL,
@@ -264,7 +264,7 @@ CREATE TABLE `users` (
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nickname` (`nickname`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
