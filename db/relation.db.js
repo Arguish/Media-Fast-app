@@ -10,9 +10,6 @@ function addRelationsToModels() {
     User.hasOne(PrivateInfo);
     PrivateInfo.belongsTo(User);
 
-    User.belongsToMany(Media, { as: "user_id", through: "user_media" });
-    Media.belongsToMany(User, { as: "media_id", through: "user_media" });
-
     User.belongsToMany(Media, { through: UserMedia });
     Media.belongsToMany(User, { through: UserMedia });
 
