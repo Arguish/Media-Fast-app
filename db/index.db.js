@@ -1,16 +1,15 @@
 const { Sequelize } = require("sequelize");
 
-const conn = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
-  {
-    host: process.env.HOST,
-    dialect: "mysql",
-    port: process.env.DB_PORT,
-    // logging: true,
-  }
-);
+const conn = new Sequelize(`${process.env.DB_dyalect}://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`)
+
+
+// const conn = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+//   host: process.env.HOST,
+//   dialect: "mysql",
+//   port: process.env.DB_PORT,
+//   // logging: true,
+// }
+// );
 
 async function checkConnection() {
   try {
@@ -30,8 +29,7 @@ async function syncModels(value) {
   try {
     await conn.sync(state[value] || "");
     console.log(
-      `All models were synchronized successfully using sync(${
-        JSON.stringify(state[value]) || ""
+      `All models were synchronized successfully using sync(${JSON.stringify(state[value]) || ""
       }).`
     );
   } catch (error) {

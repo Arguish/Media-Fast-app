@@ -1,14 +1,25 @@
 const Media = require("../models/media.model");
 const randPicker = require("random-array-picker");
 const Category = require("../models/category.model");
-
+const Platform = require('../models/platform.model')
 const createMedia = async (req, res) => {
   try {
-    const result = await Media.create(req.body);
-
-    res.status(200).json({
+    const media = await Media.create(req.body);
+    const category = await Category.findOne({
+      where: {
+        category_name: req.body.category
+      }
+    })
+    const platform = await Platform.findOne({
+      where: {
+        name: req.body.platform
+      }
+    })
+    await media.addPlatform(platform)
+    await media.addCategory(category)
+    return res.status(200).json({
       message: "POST OK ^,_,^",
-      Media: result,
+      Media: media,
     });
   } catch (error) {
     res.status(500).json(error);
