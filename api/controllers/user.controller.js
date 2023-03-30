@@ -130,11 +130,13 @@ const getUserMedia = async (req, res) => {
 const getOwnUserMedia = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
-        const user = await User.findByPk(userId)
-        console.log(user)
-        const result = await user.getMedia()
-        if (result) {
-            res.status(200).json(result)
+        const user = await User.findByPk(userId, {
+            include: Media
+        })
+        // const result = await user.getMedia() 
+        // if (result) {
+        if (user) {
+            res.status(200).json(user)
         } else {
             res.status(400).send('User wasnt found')
         }
