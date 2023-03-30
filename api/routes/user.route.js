@@ -12,12 +12,10 @@ const {
   deleteOwnUser,
 } = require("../controllers/user.controller");
 const { checkAdmin, checkAuth } = require("../middleware/auth");
-const { goAdmin, goUser } = require("../middleware/authCopy");
-
 const router = require("express").Router();
 
-router.get("/", goAdmin, getUsers);
-router.get("/me", goUser, getOwnUser);
+router.get("/", checkAuth, checkAdmin, getUsers);
+router.get("/me", checkAuth, getOwnUser);
 router.get("/me/user_media", checkAuth, getOwnUserMedia);
 
 router.get("/:userId", checkAuth, checkAdmin, getOneUser);

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 //CRUD
+const { checkAdmin, checkAuth } = require("../middleware/auth");
 const {
   createMedia,
   getAllMedia,
@@ -11,17 +12,17 @@ const {
 //
 
 //C
-router.post("/", createMedia);
+router.post("/", checkAuth, checkAdmin, createMedia);
 
 //R
-router.get("/", getAllMedia);
-router.get("/random", getRandomMedia);
-router.get("/:mediaId", getMediaById);
+router.get("/", checkAuth, getAllMedia);
+router.get("/random", checkAuth, getRandomMedia);
+router.get("/:mediaId", checkAuth, getMediaById);
 
 //U
-router.put("/:mediaId", updateMedia);
+router.put("/:mediaId", checkAuth, checkAdmin, updateMedia);
 
 //D
-router.delete("/:mediaId", deleteMedia);
+router.delete("/:mediaId", checkAuth, checkAdmin, deleteMedia);
 
 module.exports = router;
