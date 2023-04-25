@@ -131,7 +131,12 @@ const getOwnUserMedia = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
         const user = await User.findByPk(userId, {
-            include: Media
+            include: [{
+                model: models.Media,
+                include: [{
+                    model: models.Category
+                }]
+            }], required: true
         })
         // const result = await user.getMedia() 
         // if (result) {
