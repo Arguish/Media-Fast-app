@@ -4,7 +4,7 @@ const { Sequelize } = require("sequelize");
 
 const conn = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASS, {
   host: process.env.HOST,
-  dialect: process.env.DIALECT,
+  dialect: "mysql",
   logging: false
 })
 
