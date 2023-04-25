@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 // const conn = new Sequelize(`${process.env.DB_dyalect}://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`)
 
 const conn = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASS, {
-  host: process.env.DB_HOST,
+  host: process.env.HOST,
   dialect: process.env.DIALECT,
   logging: false
 })
