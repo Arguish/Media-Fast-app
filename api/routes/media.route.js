@@ -8,12 +8,13 @@ const {
   updateMedia,
   deleteMedia,
   getRandomMedia,
+  createManyMedia,
 } = require("../controllers/media.controller.js");
 //
 
 //C
 router.post("/", checkAuth, checkAdmin, createMedia);
-
+router.post("/many", checkAuth, checkAdmin, createManyMedia)
 //R
 router.get("/", checkAuth, getAllMedia);
 router.get("/random", checkAuth, getRandomMedia);

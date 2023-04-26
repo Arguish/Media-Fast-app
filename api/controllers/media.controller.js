@@ -26,6 +26,34 @@ const createMedia = async (req, res) => {
   }
 };
 
+const createManyMedia = async (req, res) => {
+  try {
+    const media = await Media.bulkCreate(req.body, {
+      include: [Category, Platform]
+    });
+    // const category = await Category.findOne({
+    //   where: {
+    //     category_name: req.body.category
+    //   }
+    // })
+    // const platform = await Platform.findOne({
+    //   where: {
+    //     name: req.body.platform
+    //   }
+    // }
+    // )
+    // await media.addPlatform(platform)
+    // await media.addCategory(category)
+    return res.status(200).json({
+      message: "POST OK ^,_,^",
+      Media: media,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
+
+
 const getAllMedia = async (req, res) => {
   try {
     const result = await Media.findAll();
@@ -101,4 +129,5 @@ module.exports = {
   updateMedia,
   deleteMedia,
   getRandomMedia,
+  createManyMedia
 };
