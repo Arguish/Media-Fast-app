@@ -42,6 +42,7 @@ const createManyMedia = async (req, res) => {
     //   }
     // }
     // )
+    console.log(media)
     // await media.addPlatform(platform)
     // await media.addCategory(category)
     return res.status(200).json({
