@@ -28,23 +28,25 @@ const createMedia = async (req, res) => {
 
 const createManyMedia = async (req, res) => {
   try {
-    const media = await Media.bulkCreate(req.body, {
-      include: [Category, Platform]
-    });
-    // const category = await Category.findOne({
-    //   where: {
-    //     category_name: req.body.category
-    //   }
-    // })
-    // const platform = await Platform.findOne({
-    //   where: {
-    //     name: req.body.platform
-    //   }
-    // }
-    // )
-    console.log(media)
-    // await media.addPlatform(platform)
-    // await media.addCategory(category)
+    const media = await req.body
+    media.forEach(async (el) => {
+      const row = await Media.create(el)
+      const category = await Category.findOne({
+        where: {
+          category_name: el.category
+        }
+      })
+      const platform = await Platform.findOne({
+        where: {
+          name: el.platform
+        }
+      })
+
+      await row.addPlatform(platform)
+      await row.addCategory(category)
+    })
+
+
     return res.status(200).json({
       message: "POST OK ^,_,^",
       Media: media,
