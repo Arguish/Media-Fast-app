@@ -30,5 +30,8 @@
     "nodemon": "^2.0.22",
     "random-array-picker": "^1.0.1",
     "sequelize": "^6.30.0"
+  },
+  "engines" : {
+    "node" : ">=16.14"
   }
 }

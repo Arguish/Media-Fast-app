@@ -26,6 +26,37 @@ const createMedia = async (req, res) => {
   }
 };
 
+const createManyMedia = async (req, res) => {
+  try {
+    const media = await req.body
+    media.forEach(async (el) => {
+      const row = await Media.create(el)
+      const category = await Category.findOne({
+        where: {
+          category_name: el.category
+        }
+      })
+      const platform = await Platform.findOne({
+        where: {
+          name: el.platform
+        }
+      })
+
+      await row.addPlatform(platform)
+      await row.addCategory(category)
+    })
+
+
+    return res.status(200).json({
+      message: "POST OK ^,_,^",
+      Media: media,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
+
+
 const getAllMedia = async (req, res) => {
   try {
     const result = await Media.findAll(
@@ -103,4 +134,5 @@ module.exports = {
   updateMedia,
   deleteMedia,
   getRandomMedia,
+  createManyMedia
 };

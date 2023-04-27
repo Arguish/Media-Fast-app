@@ -17,7 +17,6 @@ const router = require("express").Router();
 router.get("/", checkAuth, checkAdmin, getUsers);
 router.get("/me", checkAuth, getOwnUser);
 router.get("/me/user_media", checkAuth, getOwnUserMedia);
-
 router.get("/:userId", checkAuth, checkAdmin, getOneUser);
 router.get("/:userId/user_media", checkAuth, checkAdmin, getUserMedia);
 
