@@ -115,10 +115,20 @@ const getOwnUser = async (req, res) => {
 const getUserMedia = async (req, res) => {
     try {
         const userId = req.params.userId
-        const user = await User.findByPk(userId)
-        const result = await user.getMedia()
-        if (result) {
-            res.status(200).json(result)
+        const user = await User.findByPk(userId, {
+            include: [
+                {
+                    model: Media,
+                    attributes: ['title', 'type'],
+                    include: {
+                        model: Category,
+                        attributes: ['category_name'],
+                    }
+                },
+            ], required: true
+        })
+        if (user) {
+            res.status(200).json(user)
         } else {
             res.status(400).send('User wasnt found')
         }

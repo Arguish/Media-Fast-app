@@ -28,7 +28,9 @@ const createMedia = async (req, res) => {
 
 const getAllMedia = async (req, res) => {
   try {
-    const result = await Media.findAll();
+    const result = await Media.findAll(
+      { include: [Platform, Category] }
+    );
     if (!result) {
       res.status(404).send("Media not found");
     }
