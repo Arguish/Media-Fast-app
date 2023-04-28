@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const cors = require("cors")
 const express = require("express");
 const api = express();
 const morgan = require("morgan");
@@ -9,6 +9,7 @@ const addRelationsToModels = require("./db/relation.db.js");
 
 function initializeAndListenWithExpress() {
   const api = express()
+    .use(cors())
     .use(morgan("dev"))
     .use(express.json())
     .use("/api", require("./api/routes/index.routes"))
