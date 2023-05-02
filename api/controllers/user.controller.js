@@ -105,6 +105,12 @@ const getOwnUser = async (req, res) => {
         const user = await User.findByPk(userId, {
             include: [
                 {
+                    model: Category,
+                    attributes: {
+                        exclude: ["updatedAt","createdAt","user_category"]
+                    }
+                },
+                {
                     model: Media,
                     attributes: ['title', 'type'],
                     include: {
@@ -135,6 +141,9 @@ const getUserMedia = async (req, res) => {
         const userId = req.params.userId
         const user = await User.findByPk(userId, {
             include: [
+                {
+                    model:Category
+                },
                 {
                     model: Media,
                     attributes: ['title', 'type'],
@@ -212,11 +221,6 @@ const addCategoryToOwnUser = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
         const categoriesId = req.body
-        if (categoriesId) {
-            console.log(categoriesId, 'in categoriesId')
-        } else {
-            console.log(req.body, 'in req.body')
-        }
         const user = await User.findByPk(userId)
         categoriesId.forEach(async (el) => {
             const category = await Category.findByPk(el.id)
