@@ -222,7 +222,7 @@ const addCategoryToOwnUser = async (req, res) => {
             return res.status(400).send('User or category wasnt found')
         }
     } catch (error) {
-        res.status(500).send(err)
+        res.status(500).send(error)
     }
 }
 
