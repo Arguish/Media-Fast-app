@@ -211,7 +211,7 @@ const addMediaToOwnUser = async (req, res) => {
 const addCategoryToOwnUser = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
-        const categoriesId = req.body.categories
+        const categoriesId = req.body
         if (categoriesId) {
             console.log(categoriesId, 'in categoriesId')
         } else {
