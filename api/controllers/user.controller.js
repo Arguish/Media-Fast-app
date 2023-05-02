@@ -113,7 +113,10 @@ const getOwnUser = async (req, res) => {
                     }
                 },
                 {
-                    model: PrivateInfo
+                    model: PrivateInfo,
+                    attributes: {
+                        exclude: ['password']
+                    }
                 }
             ], required: true
         })
