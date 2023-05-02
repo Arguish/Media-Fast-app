@@ -10,6 +10,7 @@ const {
   getUserMedia,
   updateOwnUser,
   deleteOwnUser,
+  addCategoryToOwnUser,
 } = require("../controllers/user.controller");
 const { checkAdmin, checkAuth } = require("../middleware/auth");
 const router = require("express").Router();
@@ -22,8 +23,11 @@ router.get("/:userId/user_media", checkAuth, checkAdmin, getUserMedia);
 
 router.put("/me", checkAuth, updateOwnUser);
 router.put("/:userId", checkAuth, checkAdmin, updateUser);
+
 router.post("/", checkAuth, checkAdmin, createUser);
+router.post("/me/categories", checkAuth, addCategoryToOwnUser)
 router.post("/me/user_media/:mediaId", checkAuth, addMediaToOwnUser);
+
 router.delete("/me", checkAuth, deleteOwnUser);
 router.delete("/:userId", checkAuth, checkAdmin, deleteUser);
 

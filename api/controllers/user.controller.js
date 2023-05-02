@@ -1,6 +1,7 @@
 const User = require('../models/user.model')
 const Media = require('../models/media.model')
 const Category = require('../models/category.model')
+const PrivateInfo = require('../models/private_info.model')
 const getUsers = async (req, res) => {
     try {
         const result = await User.findAll()
@@ -110,6 +111,8 @@ const getOwnUser = async (req, res) => {
                         model: Category,
                         attributes: ['category_name'],
                     }
+                    ,
+                    model: PrivateInfo
                 },
             ], required: true
         })
