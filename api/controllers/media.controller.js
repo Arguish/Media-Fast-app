@@ -62,6 +62,7 @@ const getAllMedia = async (req, res) => {
     const result = await Media.findAll(
       { include: [Platform, Category] }
     );
+    console.log('HERE =>>>> ',result[1].dataValues)
     if (!result) {
       res.status(404).send("Media not found");
     }

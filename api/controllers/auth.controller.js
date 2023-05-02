@@ -19,16 +19,21 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    const user = await PrivateInfo.findOne({ where: { email: req.body.email } })
-    if (!user) {
+    const userInfo = await PrivateInfo.findOne({
+      where: {email: req.body.email},
+      include: [
+        {model: User}
+      ],
+    })
+    if (!userInfo) {
       return res.status(403).send('Email or password invalid')
     }
-    bcrypt.compare(req.body.password, user.password, (err, result) => {
+    bcrypt.compare(req.body.password, userInfo.password, (err, result) => {
       if (!result) {
         return res.status(403).send('Email or password invalid')
       }
-      const token = jwt.sign({ email: user.email }, process.env.SECRET)
-      return res.status(201).json({ token })
+      const token = jwt.sign({ email: userInfo.email }, process.env.SECRET)
+      return res.status(201).json({ userInfo,token })
     })
   } catch (error) {
     console.error(error)

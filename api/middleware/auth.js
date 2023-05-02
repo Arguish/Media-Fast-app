@@ -8,7 +8,13 @@ const checkAuth = (req, res, next) => {
     if (err) {
       return res.status(400).send("Invalid token");
     }
-
+    // const user = await User.findOne({
+    //   where: {email: payload.email},
+    //   include: [{
+    //     model: models.PrivateInfo
+    //   }
+    //   ]
+    // })
     const privateInfo = await PrivateInfo.findOne({
       where: { email: payload.email },
     });
@@ -17,6 +23,7 @@ const checkAuth = (req, res, next) => {
       return res.status(400).send("Invalid token");
     }
     res.locals.privateInfo = privateInfo;
+    // res.locals.user = user
     next();
   });
 };
