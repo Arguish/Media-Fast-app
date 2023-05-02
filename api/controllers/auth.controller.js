@@ -5,7 +5,7 @@ const PrivateInfo = require('../models/private_info.model')
 const register = async (req, res) => {
   try {
     req.body.password = bcrypt.hashSync(req.body.password, 10)
-    const url = 'https://www.robohash.com/' + req.body.nickname
+    const url = 'https://www.robohash.org/' + req.body.nickname
     req.body.img_url = url
     const user = await User.create(req.body)
     const privateinfo1 = await PrivateInfo.create(req.body)
