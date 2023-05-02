@@ -211,10 +211,12 @@ const addMediaToOwnUser = async (req, res) => {
 const addCategoryToOwnUser = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
+        const categoriesId = req.body.categories
         const user = await User.findByPk(userId)
-        const category = await Category.findByPk(categoryId)
-        await user.addCategory(category)
-        if (user && category) {
+        categoriesId.forEach(async (el) => {
+            await user.addCategory(el)
+        })
+        if (user) {
             return res.status(200).send('Category added to user')
         } else {
             return res.status(400).send('User or category wasnt found')
