@@ -1,6 +1,6 @@
 const User = require('../models/user.model')
 const Media = require('../models/media.model')
-
+const Category = require('../models/category.model')
 const getUsers = async (req, res) => {
     try {
         const result = await User.findAll()
@@ -101,9 +101,20 @@ const deleteOwnUser = async (req, res) => {
 const getOwnUser = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
-        const result = await User.findByPk(userId)
-        if (result) {
-            res.status(200).json(result)
+        const user = await User.findByPk(userId, {
+            include: [
+                {
+                    model: Media,
+                    attributes: ['title', 'type'],
+                    include: {
+                        model: Category,
+                        attributes: ['category_name'],
+                    }
+                },
+            ], required: true
+        })
+        if (user) {
+            res.status(200).json(user)
         } else {
             res.status(400).send('User wasnt found')
         }
@@ -148,8 +159,6 @@ const getOwnUserMedia = async (req, res) => {
                 }]
             }], required: true
         })
-        // const result = await user.getMedia() 
-        // if (result) {
         if (user) {
             res.status(200).json(user)
         } else {
@@ -192,7 +201,18 @@ const addMediaToOwnUser = async (req, res) => {
     }
 }
 
+const addCategoryToOwnUser = async (req, res) => {
+    try {
+        const userId = res.locals.privateInfo.userId
+        const user = await User.findByPk(userId)
+        const category = await Category.findByPk(categoryId)
+        user.addCategory(category)
+    } catch (error) {
+        res.status(500).send(err)
+    }
+}
+
 
 module.exports = {
-    getOneUser, getUsers, updateUser, createUser, deleteUser, getOwnUser, getOwnUserMedia, addMediaToOwnUser, getUserMedia, updateOwnUser, deleteOwnUser
+    getOneUser, getUsers, updateUser, createUser, deleteUser, getOwnUser, getOwnUserMedia, addMediaToOwnUser, getUserMedia, updateOwnUser, deleteOwnUser, addCategoryToOwnUser
 }
