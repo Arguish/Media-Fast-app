@@ -213,7 +213,12 @@ const addCategoryToOwnUser = async (req, res) => {
         const userId = res.locals.privateInfo.userId
         const user = await User.findByPk(userId)
         const category = await Category.findByPk(categoryId)
-        user.addCategory(category)
+        await user.addCategory(category)
+        if (user && category) {
+            return res.status(200).send('Category added to user')
+        } else {
+            return res.status(400).send('User or category wasnt found')
+        }
     } catch (error) {
         res.status(500).send(err)
     }
