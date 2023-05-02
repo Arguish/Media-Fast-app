@@ -111,9 +111,10 @@ const getOwnUser = async (req, res) => {
                         model: Category,
                         attributes: ['category_name'],
                     }
-                    ,
-                    model: PrivateInfo
                 },
+                {
+                    model: PrivateInfo
+                }
             ], required: true
         })
         if (user) {
