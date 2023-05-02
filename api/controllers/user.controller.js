@@ -213,13 +213,14 @@ const addCategoryToOwnUser = async (req, res) => {
         const userId = res.locals.privateInfo.userId
         const categoriesId = req.body.categories
         if (categoriesId) {
-            console.log(categoriesId)
+            console.log(categoriesId, 'in categoriesId')
         } else {
-            console.log(req.body)
+            console.log(req.body, 'in req.body')
         }
         const user = await User.findByPk(userId)
         categoriesId.forEach(async (el) => {
-            await user.addCategory(el)
+            const category = await Category.findByPk(el.id)
+            await user.addCategory(category)
         })
         if (user) {
             return res.status(200).send('Category added to user')
