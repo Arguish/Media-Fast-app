@@ -28,7 +28,7 @@ const createMedia = async (req, res) => {
 
 const createManyMedia = async (req, res) => {
   try {
-    const media = await req.body
+    const media = req.body
     media.forEach(async (el) => {
       const row = await Media.create(el)
       const category = await Category.findOne({
