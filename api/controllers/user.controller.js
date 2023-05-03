@@ -245,12 +245,19 @@ const updateUserCategories = async (req, res) => {
                 model: Category
             }], required: true
         })
-        console.log(user)
-        categories.forEach(async (el) => {
+        const previousUserCategories = user.categories.map(el => el.dataValues)
+        categories.map(async (el) => {
             const category = await Category.findByPk(el.id)
+            return category
+        })
+        previousUserCategories.forEach(async (el) => {
+            await user.removeCategory(el.id)
+        })
+        categories.forEach(async (el) => {
+            await user.addCategory(el.id)
         })
     } catch (error) {
-        res.status(500).send('Categories or user wasnt found', error)
+        return res.status(400).send('User or category wasnt found')
     }
 }
 
