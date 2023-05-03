@@ -74,7 +74,9 @@ const getAllMedia = async (req, res) => {
 
 const getMediaById = async (req, res) => {
   try {
-    const result = await Media.findByPk(req.params.mediaId);
+    const result = await Media.findByPk(req.params.mediaId, {
+      include: [Platform, Category], required: true
+    });
     if (!result) {
       res.status(404).send("Media not found");
     }

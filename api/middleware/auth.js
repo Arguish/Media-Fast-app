@@ -8,11 +8,9 @@ const checkAuth = (req, res, next) => {
     if (err) {
       return res.status(400).send("Invalid token USER CREDENTIALS DONT MATCH");
     }
-
     const privateInfo = await PrivateInfo.findOne({
       where: { email: payload.email },
     });
-
     if (!privateInfo) {
       return res.status(400).send("Invalid token PRIVATE INFO NOT FOUND");
     }

@@ -11,6 +11,7 @@ const {
   updateOwnUser,
   deleteOwnUser,
   addCategoryToOwnUser,
+  updateUserCategories,
 } = require("../controllers/user.controller");
 const { checkAdmin, checkAuth } = require("../middleware/auth");
 const router = require("express").Router();
@@ -22,6 +23,7 @@ router.get("/:userId", checkAuth, checkAdmin, getOneUser);
 router.get("/:userId/user_media", checkAuth, checkAdmin, getUserMedia);
 
 router.put("/me", checkAuth, updateOwnUser);
+router.put("/me/categories", checkAuth, updateUserCategories )
 router.put("/:userId", checkAuth, checkAdmin, updateUser);
 
 router.post("/", checkAuth, checkAdmin, createUser);

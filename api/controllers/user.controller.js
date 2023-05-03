@@ -236,7 +236,25 @@ const addCategoryToOwnUser = async (req, res) => {
     }
 }
 
+const updateUserCategories = async (req, res) => {
+    try {
+        const userId = res.locals.privateInfo.userId
+        const categories = req.body
+        const user = await User.findByPk(userId, {
+            include: [{
+                model: Category
+            }], required: true
+        })
+        console.log(user)
+        categories.forEach(async (el) => {
+            const category = await Category.findByPk(el.id)
+        })
+    } catch (error) {
+        res.status(500).send('Categories or user wasnt found', error)
+    }
+}
+
 
 module.exports = {
-    getOneUser, getUsers, updateUser, createUser, deleteUser, getOwnUser, getOwnUserMedia, addMediaToOwnUser, getUserMedia, updateOwnUser, deleteOwnUser, addCategoryToOwnUser
+    getOneUser, getUsers, updateUser, createUser, deleteUser, getOwnUser, getOwnUserMedia, addMediaToOwnUser, getUserMedia, updateOwnUser, deleteOwnUser, addCategoryToOwnUser, updateUserCategories
 }
