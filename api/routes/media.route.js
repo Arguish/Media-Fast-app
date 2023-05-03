@@ -9,6 +9,7 @@ const {
   deleteMedia,
   getRandomMedia,
   createManyMedia,
+  getMediaByCategory,
 } = require("../controllers/media.controller.js");
 //
 
@@ -18,8 +19,8 @@ router.post("/many", checkAuth, checkAdmin, createManyMedia)
 //R
 router.get("/", checkAuth, getAllMedia);
 router.get("/random", checkAuth, getRandomMedia);
+router.get("/user/:userId/categories", checkAuth, getMediaByCategory)
 router.get("/:mediaId", checkAuth, getMediaById);
-
 //U
 router.put("/:mediaId", checkAuth, checkAdmin, updateMedia);
 

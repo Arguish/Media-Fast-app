@@ -1,7 +1,8 @@
 const Media = require("../models/media.model");
 const randPicker = require("random-array-picker");
 const Category = require("../models/category.model");
-const Platform = require('../models/platform.model')
+const Platform = require('../models/platform.model');
+const User = require('../models/user.model');
 const createMedia = async (req, res) => {
   try {
     const media = await Media.create(req.body);
@@ -130,6 +131,35 @@ const deleteMedia = async (req, res) => {
   }
 };
 
+
+const getMediaByCategory = async (req, res) => {
+  try {
+    const user = await User.findByPk(parseInt(req.params.userId), {
+      include: [Category]
+    })
+    const userCategories = user.categories.map(el => el.dataValues.category_name)
+    const media = await Media.findAll({
+      include: [Category, Platform]
+    })
+
+    const result = media.filter((oneMedia) => {
+      if (oneMedia.categories.length > 0) {
+        const mediaCategory = oneMedia.categories.map(el => el.dataValues.category_name)
+        return userCategories.includes(mediaCategory[0])
+      }
+    })
+    if (result) {
+      return res.status(200).json(result)
+    } else {
+      return res.status(508).send('No results')
+    }
+
+  } catch (err) {
+   return res.status(505).send('Media or category wasnt found.')
+  }
+}
+
+
 module.exports = {
   createMedia,
   getAllMedia,
@@ -137,5 +167,6 @@ module.exports = {
   updateMedia,
   deleteMedia,
   getRandomMedia,
-  createManyMedia
+  createManyMedia,
+  getMediaByCategory
 };
