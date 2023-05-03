@@ -6,24 +6,17 @@ const checkAuth = (req, res, next) => {
 
   jwt.verify(token, process.env.SECRET, async (err, payload) => {
     if (err) {
-      return res.status(400).send("Invalid token");
+      return res.status(400).send("Invalid token USER CREDENTIALS DONT MATCH");
     }
-    // const user = await User.findOne({
-    //   where: {email: payload.email},
-    //   include: [{
-    //     model: models.PrivateInfo
-    //   }
-    //   ]
-    // })
+
     const privateInfo = await PrivateInfo.findOne({
       where: { email: payload.email },
     });
 
     if (!privateInfo) {
-      return res.status(400).send("Invalid token");
+      return res.status(400).send("Invalid token PRIVATE INFO NOT FOUND");
     }
     res.locals.privateInfo = privateInfo;
-    // res.locals.user = user
     next();
   });
 };

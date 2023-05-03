@@ -107,7 +107,7 @@ const getOwnUser = async (req, res) => {
                 {
                     model: Category,
                     attributes: {
-                        exclude: ["updatedAt","createdAt","user_category"]
+                        exclude: ["updatedAt", "createdAt", "user_category"]
                     }
                 },
                 {
@@ -142,7 +142,7 @@ const getUserMedia = async (req, res) => {
         const user = await User.findByPk(userId, {
             include: [
                 {
-                    model:Category
+                    model: Category
                 },
                 {
                     model: Media,
