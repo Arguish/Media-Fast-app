@@ -4,7 +4,9 @@ const Category = require('../models/category.model')
 const PrivateInfo = require('../models/private_info.model')
 const getUsers = async (req, res) => {
     try {
-        const result = await User.findAll()
+        const result = await User.findAll({
+            include: [PrivateInfo]
+        })
         if (result) {
             res.status(200).json(result)
         } else {
