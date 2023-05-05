@@ -19,7 +19,9 @@ const getUsers = async (req, res) => {
 
 const getOneUser = async (req, res) => {
     try {
-        const result = await User.findByPk(req.params.userId)
+        const result = await User.findByPk(req.params.userId, {
+            include: [PrivateInfo, Media, Category]
+        })
         if (result) {
             res.status(200).json(result)
         } else {
