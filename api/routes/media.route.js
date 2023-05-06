@@ -10,6 +10,7 @@ const {
   getRandomMedia,
   createManyMedia,
   getMediaByCategory,
+  getShowByCategory,
 } = require("../controllers/media.controller.js");
 //
 
@@ -20,6 +21,8 @@ router.post("/many", checkAuth, checkAdmin, createManyMedia)
 router.get("/", checkAuth, getAllMedia);
 router.get("/random", checkAuth, getRandomMedia);
 router.get("/user/:userId/categories", checkAuth, getMediaByCategory)
+router.get("/user/:userId/categories/media/:type", checkAuth, getShowByCategory)
+
 router.get("/:mediaId", checkAuth, getMediaById);
 //U
 router.put("/:mediaId", checkAuth, checkAdmin, updateMedia);

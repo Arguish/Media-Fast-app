@@ -159,6 +159,36 @@ const getMediaByCategory = async (req, res) => {
   }
 }
 
+const getShowByCategory = async (req,res) => {
+  try {
+    const user = await User.findByPk(parseInt(req.params.userId), {
+      include: [Category]
+    })
+    const userCategories = user.categories.map(el => el.dataValues.category_name)
+    const media = await Media.findAll({
+      where: {
+        type: req.params.type
+      },
+      include: [Category, Platform]
+    })
+
+    const result = media.filter((oneMedia) => {
+      if (oneMedia.categories.length > 0) {
+        const mediaCategory = oneMedia.categories.map(el => el.dataValues.category_name)
+        return userCategories.includes(mediaCategory[0])
+      }
+    })
+    if (result) {
+      return res.status(200).json(result)
+    } else {
+      return res.status(508).send('No results')
+    }
+    return res.status(200).send(req.params)
+  } catch (err) {
+    return res.status(505).send('Media or category wasnt found.')
+  }
+}
+
 
 module.exports = {
   createMedia,
@@ -168,5 +198,6 @@ module.exports = {
   deleteMedia,
   getRandomMedia,
   createManyMedia,
-  getMediaByCategory
+  getMediaByCategory,
+  getShowByCategory
 };

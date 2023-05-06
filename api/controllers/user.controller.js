@@ -224,13 +224,22 @@ const addMediaToOwnUser = async (req, res) => {
 const addCategoryToOwnUser = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
-        const categoriesId = req.body
-        const user = await User.findByPk(userId)
-        categoriesId.forEach(async (el) => {
+        const categories = req.body
+        const user = await User.findByPk(userId, {
+            include: [{
+                model: Category
+            }], required: true
+        })
+        categories.map(async (el) => {
             const category = await Category.findByPk(el.id)
-            await user.addCategory(category)
+            return category
+        })
+        await user.setCategories([])
+        categories.forEach(async (el) => {
+            await user.addCategory(el.id)
         })
         if (user) {
+            console.log(user.categories)
             return res.status(200).send('Category added to user')
         } else {
             return res.status(400).send('User or category wasnt found')
@@ -249,17 +258,15 @@ const updateUserCategories = async (req, res) => {
                 model: Category
             }], required: true
         })
-        const previousUserCategories = user.categories.map(el => el.dataValues)
         categories.map(async (el) => {
             const category = await Category.findByPk(el.id)
             return category
         })
-        previousUserCategories.forEach(async (el) => {
-            await user.removeCategory(el.id)
-        })
+        await user.setCategories([])
         categories.forEach(async (el) => {
             await user.addCategory(el.id)
         })
+        return res.status(210).send('User categories updated')
     } catch (error) {
         return res.status(400).send('User or category wasnt found')
     }
