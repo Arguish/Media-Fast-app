@@ -23,7 +23,7 @@ async function startAPI() {
 
   await checkConnection()
   await addRelationsToModels()
-  await syncModels()
+  await syncModels('alter')
   await initializeAndListenWithExpress()
   console.log('Todo ok')
 
