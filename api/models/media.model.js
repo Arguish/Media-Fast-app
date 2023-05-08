@@ -4,6 +4,7 @@ const { conn } = require("../../db/index.db");
 const Media = conn.define("media", {
   originalId: {
     type: DataTypes.INTEGER,
+    defaultValue: 0
   },
   title: {
     type: DataTypes.STRING,
@@ -29,7 +30,8 @@ const Media = conn.define("media", {
     validate: {},
   },
   image: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    defaultValue: ""
   }
 });
 
