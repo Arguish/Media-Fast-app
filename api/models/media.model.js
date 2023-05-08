@@ -2,6 +2,9 @@ const { DataTypes } = require("sequelize");
 const { conn } = require("../../db/index.db");
 
 const Media = conn.define("media", {
+  originalId: {
+    type: DataTypes.INTEGER,
+  },
   title: {
     type: DataTypes.STRING,
     validate: {},
@@ -25,6 +28,9 @@ const Media = conn.define("media", {
     allowNull: false,
     validate: {},
   },
+  image: {
+    type: DataTypes.TEXT
+  }
 });
 
 module.exports = Media;
