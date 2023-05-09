@@ -6,12 +6,12 @@ const User = require('../models/user.model');
 const createMedia = async (req, res) => {
   try {
     const media = await Media.create(req.body);
-    const category = await Category.findOne({
+    const category = await Category.findOrCreate({
       where: {
         category_name: req.body.category
       }
     })
-    const platform = await Platform.findOne({
+    const platform = await Platform.findOrCreate({
       where: {
         name: req.body.platform
       }
@@ -32,12 +32,12 @@ const createManyMedia = async (req, res) => {
     const media = req.body
     media.forEach(async (el) => {
       const row = await Media.create(el)
-      const category = await Category.findOne({
+      const category = await Category.findOrCreate({
         where: {
           category_name: el.category
         }
       })
-      const platform = await Platform.findOne({
+      const platform = await Platform.findOrCreate({
         where: {
           name: el.platform
         }
@@ -159,7 +159,7 @@ const getMediaByCategory = async (req, res) => {
   }
 }
 
-const getShowByCategory = async (req,res) => {
+const getShowByCategory = async (req, res) => {
   try {
     const user = await User.findByPk(parseInt(req.params.userId), {
       include: [Category]
