@@ -16,8 +16,12 @@ const createMedia = async (req, res) => {
         name: req.body.platform
       }
     })
-    await media.addPlatform(platform)
-    await media.addCategory(category)
+    const categoryData = category.map((el) => el.dataValues)
+    const platformData = platform.map((el) => el.dataValues)
+    const selectedPlatform = await Platform.findByPk(platformData[0].id)
+    const selectedCategory = await Category.findByPk(categoryData[0].id)
+    await media.addPlatform(selectedPlatform)
+    await media.addCategory(selectedCategory)
     return res.status(200).json({
       message: "POST OK ^,_,^",
       Media: media,
@@ -183,7 +187,6 @@ const getShowByCategory = async (req, res) => {
     } else {
       return res.status(508).send('No results')
     }
-    return res.status(200).send(req.params)
   } catch (err) {
     return res.status(505).send('Media or category wasnt found.')
   }
