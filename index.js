@@ -9,7 +9,10 @@ const addRelationsToModels = require("./db/relation.db.js");
 
 function initializeAndListenWithExpress() {
   const api = express()
-    .use(cors())
+    .use(cors({
+      "Access-Control-Allow-Origin": "*"
+    }
+    ))
     .use(morgan("dev"))
     .use(express.json())
     .use("/api", require("./api/routes/index.routes"))

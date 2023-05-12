@@ -3,7 +3,6 @@ const User = require("../models/user.model");
 const PrivateInfo = require("../models/private_info.model");
 const checkAuth = (req, res, next) => {
   const token = req.headers.token;
-
   jwt.verify(token, process.env.SECRET, async (err, payload) => {
     if (err) {
       return res.status(400).send("Invalid token USER CREDENTIALS DONT MATCH");

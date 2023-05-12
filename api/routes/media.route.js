@@ -19,7 +19,7 @@ router.post("/", checkAuth, checkAdmin, createMedia);
 router.post("/many", checkAuth, checkAdmin, createManyMedia)
 //R
 router.get("/", checkAuth, getAllMedia);
-router.get("/random", checkAuth, getRandomMedia);
+router.get("/random", getRandomMedia);
 router.get("/user/:userId/categories", checkAuth, getMediaByCategory)
 router.get("/user/:userId/categories/media/:type", checkAuth, getShowByCategory)
 
