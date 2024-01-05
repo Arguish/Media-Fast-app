@@ -193,7 +193,6 @@ const getOwnUserMediaLimited = async (req, res) => {
     try {
         const userId = res.locals.privateInfo.userId
         const user = await User.findByPk(userId)
-        console.log(user)
         const result = await user.getMedia({ limit: 4 })
         if (result) {
             res.status(200).json(result)
@@ -239,7 +238,6 @@ const addCategoryToOwnUser = async (req, res) => {
             await user.addCategory(el.id)
         })
         if (user) {
-            console.log(user.categories)
             return res.status(200).send('Category added to user')
         } else {
             return res.status(400).send('User or category wasnt found')

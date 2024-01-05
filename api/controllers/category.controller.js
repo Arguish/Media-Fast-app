@@ -35,7 +35,6 @@ async function updateCategory(req, res) {
                 id: req.params.categoryId,
             },
         })
-        console.log(updated)
         if (updated) {
             return res.status(200).json({ message: 'Category updated' })
         } else {

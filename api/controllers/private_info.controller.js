@@ -93,7 +93,6 @@ async function createPrivateInfo(req, res) {
 async function deleteMyPrivateInfo(req, res) {
     try {
         const user = res.locals.privateInfo.userId
-        console.log(user)
         const private_info = await PrivateInfo.destroy({
             where: {
                 id: user,
